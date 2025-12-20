@@ -1,90 +1,80 @@
-import { motion } from "framer-motion";
-import { ArrowRight, Github, Linkedin } from "lucide-react"; // Icons
-import Container from "../ui/Container";
+import React from 'react'
+import { FileText, Send, Github, Linkedin, Youtube, Instagram, Mail, Twitter } from "lucide-react";
+import pic from "../../images/ChatGPT Image Dec 19, 2025, 04_44_34 PM (1).png"
+import {SITE_CONFIG} from "../../data/config";
 import Button from "../ui/Button";
-import { SITE_CONFIG } from "../../data/config";
+import { TechBadge } from "../ui/TechBadge";
+export const Hero = () => {
+  const socialLinks = [
+    { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
+    { icon: Linkedin, href: "https://github.com/Adityalive", label: "LinkedIn" },
+    { icon: Github, href: "https://github.com", label: "GitHub" },
+    { icon: Youtube, href: "https://youtube.com", label: "YouTube" },
+    { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
+    { icon: Mail, href: "mailto:hello@example.com", label: "Email" },
+  ];
+  return (    
+      <section className="pt-32 pb-16 px-4 md:px-6">
+      <div className="conatiner mx-auto max-w-3xl">
+        {/* Profile Image with Status */}
+        <div className="relative w-24 h-24 mb-6 rounded-[50%]">
+          <div className="w-24 h-24 rounded-full  bg-gradient-to-br from-secondary to-muted overflow-hidden border-2 border-border">
+            <div className="w-full h-full bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
+              <img src={pic} alt="Profile" className="w-full h-full object-cover" />
+            </div>
+          </div>
+          <div className="absolute bottom-0 right-0 w-10 h-10 bg-transparent rounded-full  flex items-center justify-center">
+    <div className="relative flex h-3 w-3">
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+        <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+    </div>
+    </div>    
+        </div>
+         {/* Main Heading */}
+        <h1 className="text-base md:text-4xl lg:text-5xl  font-neuton font-medium mb-6 leading-tight animate-slide-up">
+          Hi, I'm {SITE_CONFIG.name} —{" "}
+  <span className="text-muted-foreground text-opacity-70 text-slate-800">A Full Stack web developer.</span>
+</h1>
+<p className="text-lg text-muted-foreground mb-6 leading-relaxed animate-slide-up" style={{ animationDelay: "0.1s" }}>
+          I build interactive web apps using{" "}
+          <TechBadge name="JavaScript" color="blue" />,{" "}
+          <TechBadge name="React" color="cyan" />,{" "}
+          <TechBadge name="Next.js" color="default" />,{" "}
+          <TechBadge name="npm" color="orange" /> and{" "}
+          <TechBadge name="MongoDb" color="blue" />.{" "}
+          With a focus on <span className="text-foreground font-medium">UI</span> design.
+          Enthusiastic about <span className="text-foreground font-medium">Three.js</span>,
+          driven by a keen eye for design.
+        </p>
 
-export default function Hero() {
-  return (
-    <Container className="pt-32 pb-20">
-      {/* ARCHITECT NOTE: 
-        We use a parent motion.div with 'staggerChildren'.
-        This means: "Trigger the children animations one by one, with a 0.1s delay between them."
-      */}
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={{
-          hidden: { opacity: 0 },
-          visible: {
-            opacity: 1,
-            transition: {
-              staggerChildren: 0.1, // The secret sauce for smooth flows
-            },
-          },
-        }}
-        className="flex flex-col gap-6"
-      >
-        
-        {/* Item 1: The "Status Badge" */}
-        <motion.div
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0 },
-          }}
-          className="flex items-center gap-2 text-zinc-400"
-        >
-          <span className="relative flex h-3 w-3">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-          </span>
-          <span className="text-sm font-medium">Available for new projects</span>
-        </motion.div>
-
-        {/* Item 2: The Name */}
-        <motion.h1
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0 },
-          }}
-          className="text-5xl md:text-7xl font-bold tracking-tight text-white"
-        >
-          I'm {SITE_CONFIG.name}.
-        </motion.h1>
-
-        {/* Item 3: The Description */}
-        <motion.p
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0 },
-          }}
-          className="text-lg text-zinc-400 max-w-xl leading-relaxed"
-        >
-          {SITE_CONFIG.description}
-        </motion.p>
-
-        {/* Item 4: The Buttons */}
-        <motion.div
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0 },
-          }}
-          className="flex flex-wrap gap-4 pt-4"
-        >
-          <Button onClick={() => window.open(SITE_CONFIG.socials.github, "_blank")}>
-            <Github className="w-4 h-4 mr-2" />
-            GitHub
+        {/* CTA Buttons */}
+        <div className="flex flex-wrap gap-3 mb-8 animate-slide-up" style={{ animationDelay: "0.2s" }}>
+          <Button variant="outline" className="gap-2">
+            <FileText className="w-4 h-4" />
+            Resume / CV
           </Button>
-          <Button 
-             className="bg-zinc-800 text-white hover:bg-zinc-700"
-             onClick={() => window.open(SITE_CONFIG.socials.linkedin, "_blank")}
-          >
-            <Linkedin className="w-4 h-4 mr-2" />
-            LinkedIn
+          <Button className="gap-2">
+            <Send className="w-4 h-4 " />
+            Get in touch
           </Button>
-        </motion.div>
-
-      </motion.div>
-    </Container>
-  );
+        </div>
+        {/* Social Links */}
+        <div className="flex items-center gap-4 animate-slide-up" style={{ animationDelay: "0.3s" }}>
+          {socialLinks.map((social) => (
+            <a
+              key={social.label}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              aria-label={social.label}
+            >
+              <social.icon className="w-5 h-5" />
+            </a>
+          ))}
+        </div>
+        </div>
+      </section>
+   
+  )
 }

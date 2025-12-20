@@ -1,6 +1,6 @@
 // src/data/config.js
 export const SITE_CONFIG = {
-  name: "Aditya Kumar",
+  name: "Aditya",
   role: "CSE Student & Full Stack Developer",
   description: "I build pixel-perfect web experiences with the MERN stack.",
   socials: {
