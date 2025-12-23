@@ -3,15 +3,24 @@ import { Hero } from './components/sections/Hero'
 import { Projects } from './components/sections/Projects'
 import Me from './components/sections/Me'
 import Navbar from './components/sections/Navbar'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Detailroute from './components/sections/Projects2/Detailroute'
 const App = () => {
   return (
     <div>
       <Navbar />
-      <main >
+      <Routes>
+  <Route
+    path="/"
+    element={      <>
         <Hero />
         <Projects />
         <Me />
-      </main>
+      </>
+    }
+  />
+  <Route path="/projects" element={<Detailroute />} />
+</Routes>
       
     </div>
   )
