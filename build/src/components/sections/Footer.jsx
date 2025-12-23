@@ -12,8 +12,7 @@ const Footer = () => {
   }, []);
   return (
     <footer className="w-full bg-white text-gray-900 border-t border-gray-200 py-12 px-4 md:px-8 relative">
-      <div className="max-w-5xl mx-auto">
-        
+      <div className="max-w-5xl mx-auto">        
  
 
         {/* --- BOTTOM SECTION --- */}

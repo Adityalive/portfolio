@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import pic from "../../images/ChatGPT Image Dec 19, 2025, 04_44_34 PM (1).png";
+import ThemeToogle from "../ui/ThemeToogle";
 
 const links = [
-  { name: "Work", href: "#work" },
   { name: "Blogs", href: "#blogs" },
   { name: "Projects", href: "#projects" },
   { name: "About", href: "#about" },
@@ -60,6 +60,7 @@ export default function Navbar() {
             </a>
           ))}
         </nav>
+        <ThemeToogle />
       </div>
     </header>
   );

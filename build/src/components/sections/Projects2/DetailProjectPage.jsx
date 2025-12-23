@@ -34,12 +34,12 @@ const DetailProjectPage = ({ products }) => {
             <span className="text-blue-600 font-bold tracking-widest text-xs uppercase">
               Web Development
             </span>
-            <h1 className="text-4xl md:text-6xl font-black tracking-tight text-gray-900">
+            <h1 className="text-4xl md:text-6xl font-serif font-black tracking-tight text-gray-900">
               {products.title}
             </h1>
           </div>
 
-          <p className='text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl'>
+          <p className='text-lg md:text-xl font-mono text-gray-600 leading-relaxed max-w-3xl'>
             {products.description}
           </p>
 
@@ -163,40 +163,6 @@ const DetailProjectPage = ({ products }) => {
             ))}
           </div>
         </div>
-
-
-        {/* --- CONTACT SECTION (Dark Footer Style for Contrast) --- */}
-        <div className="w-full mt-32 bg-gray-900 rounded-3xl p-8 md:p-12 overflow-hidden shadow-2xl relative">
-            {/* Subtle background pattern */}
-            <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-gray-800 rounded-full opacity-20 blur-3xl"></div>
-
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-10 relative z-10">
-              <div className="max-w-xl">
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 tracking-tight">
-                  Give your brand a voice.
-                </h2>
-                <p className="text-gray-400 mb-8 text-sm font-medium">
-                  Connect with us today
-                </p>
-
-                <div className="flex flex-wrap gap-4">
-                  <a href="mailto:peerbuild@gmail.com" className="flex items-center gap-2 bg-white text-gray-900 px-6 py-3 rounded-lg text-sm font-bold hover:bg-gray-100 transition-colors shadow-lg">
-                    <span>✉️</span> peerbuild@gmail.com
-                  </a>
-                  <a href="https://peerbuildstudios.com" target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-gray-800 border border-gray-700 text-gray-300 px-6 py-3 rounded-lg text-sm font-bold hover:bg-gray-700 transition-colors">
-                    <span>🔗</span> peerbuildstudios.com
-                  </a>
-                </div>
-              </div>
-
-              <div className="hidden md:block opacity-30 grayscale hover:grayscale-0 transition-all duration-500">
-                 <h3 className="text-white font-black text-4xl tracking-tighter uppercase">
-                    PEERBUILD
-                 </h3>
-              </div>
-            </div>
-        </div>
-
 
         {/* --- NEXT PROJECT SECTION --- */}
         <div className="mt-16">

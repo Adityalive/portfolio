@@ -28,6 +28,14 @@ export const SITE_CONFIG = {
       image: "https://plus.unsplash.com/premium_vector-1734707879403-19be24212849?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       link: "#",
     },
+     {
+      id: "project-3", // This ID must match ProductsDetails below
+      title: "Tiny Cats",
+      description: "A Computer Vision system developed using Deep Learning (CNNs) to accurately detect and classify food items in real-time. It leverages advanced object detection algorithms to analyze image data for automated dietary tracking and nutritional estimation.",
+      tags: ["MERN", "OpenAI"],
+      image: "https://plus.unsplash.com/premium_vector-1734707879403-19be24212849?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      link: "#",
+    },
   ],
   footer:[
     {
