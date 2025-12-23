@@ -6,6 +6,12 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily:{
+         dm: ['"DM Sans"', 'sans-serif'],
+        neuton: ['"Neuton"', 'serif'],
+        rubik: ['"Rubik"', 'sans-serif'],
+
+      },
       colors: {
         border: "hsl(var(--border))",
         background: "hsl(var(--background))",

@@ -1,11 +1,11 @@
 // src/data/config.js
+
+import { Quote } from "lucide-react";
+
 export const SITE_CONFIG = {
   name: "Aditya",
   role: "CSE Student & Full Stack Developer",
-  description: `I'm a Full Stack Web Developer and passionate about b
-  uilding impactful digital products. I specialize in crafting MVPs t
-  hat solve real-world problems, with a focus on clean architecture, in
-  tuitive UI, and scalable backend systems. Whether it's shipping fast or diving deep into complex challenges, I thrive on turning ideas into working software.`,
+  description: `I'm a Full Stack Web Developer and passionate about building impactful digital products. I specialize in crafting MVPs that solve real-world problems, with a focus on clean architecture, intuitive UI, and scalable backend systems. Whether it's shipping fast or diving deep into complex challenges, I thrive on turning ideas into working software.`,
   socials: {
     github: "https://github.com/Adityalive",
     linkedin: "https://linkedin.com/in/your-id",
@@ -13,7 +13,7 @@ export const SITE_CONFIG = {
   },
   projects: [
     {
-      id: "project-1",
+      id: "project-1", // This ID must match ProductsDetails below
       title: "AI Code Reviewer",
       description: `A MERN stack platform leveraging Generative AI to automate code reviews. It provides real-time static analysis, detects security vulnerabilities, and offers intelligent refactoring suggestions to optimize performance`,
       tags: ["React", "Node.js", "AI API"],
@@ -21,7 +21,7 @@ export const SITE_CONFIG = {
       link: "#",
     },
     {
-      id: "project-2",
+      id: "project-2", // This ID must match ProductsDetails below
       title: "Tiny Cats",
       description: "A Computer Vision system developed using Deep Learning (CNNs) to accurately detect and classify food items in real-time. It leverages advanced object detection algorithms to analyze image data for automated dietary tracking and nutritional estimation.",
       tags: ["MERN", "OpenAI"],
@@ -29,4 +29,15 @@ export const SITE_CONFIG = {
       link: "#",
     },
   ],
+  footer:[
+    {
+      Quote:"Wake up to reality. Nothing ever goes as planned in this world.",
+      author:"Madara Uchiha"
+    },
+    {
+      Quote: "What if it all works out in the end?",
+      author:"Unknown"
+    }
+  ]
 };
+

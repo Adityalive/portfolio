@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // 1. Import Link
 import { SITE_CONFIG } from '../../data/config';
 import Card from '../ui/Card';
 
@@ -16,7 +17,15 @@ export const Projects = () => {
         {/* Grid Layout */}
         <div className="flex flex-wrap justify-center gap-10">
           {SITE_CONFIG.projects.map((project, index) => (
-            <Card key={project.id} project={project} index={index} />
+            /* 2. Wrap Card in Link */
+            /* The 'to' path must match the Route path in App.js (/project/:id) */
+            <Link 
+              to={`/project/${project.id}`} 
+              key={project.id} // Key moves to the outer element
+              className="group block" // Optional: helps with hover states
+            >
+              <Card project={project} index={index} />
+            </Link>
           ))}
         </div>
       </div>
