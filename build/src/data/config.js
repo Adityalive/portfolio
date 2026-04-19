@@ -1,6 +1,10 @@
 // src/data/config.js
 
 import { Quote } from "lucide-react";
+import smartSaverImg from "../images/smart-saver.png";
+import holosai1 from "../images/Holosai1.png";
+import holosai2 from "../images/Holosai2.png";
+import moodifyImg from "../images/moodify.png";
 
 export const SITE_CONFIG = {
   name: "Aditya",
@@ -9,12 +13,13 @@ export const SITE_CONFIG = {
 
   socials: {
     github: "https://github.com/Adityalive",
-    linkedin: "https://linkedin.com/in/your-id",
-    twitter: "https://twitter.com",
-    x: "https://x.com",
+    linkedin: "https://www.linkedin.com/in/aditya-kumar-1902ba365/",
+    twitter: "https://x.com/AdityaK10208976",
+    x: "https://x.com/AdityaK10208976",
     youtube: "https://youtube.com",
     instagram: "https://instagram.com",
-    mail: "mailto:hi@aditya.in"
+    mail: "mailto:adityakumar4176o@gmail.com",
+    resume: "https://drive.google.com/file/d/1Fo2NV78_IatMhHwRaUuolpM9_klIJcC2/view?usp=drive_link"
   },
 
   experience: [
@@ -47,7 +52,7 @@ export const SITE_CONFIG = {
       title: "HolosAI – Deep Research Pipeline",
       description: `A multi-agent AI research system that automates deep research workflows. It generates structured reports (Abstract, Background, Applications, Challenges, Key Findings) in under 30 seconds using query expansion, parallel web search, and LLM-based synthesis. Reduced manual research time by 90%+.`,
       tags: ["LangChain", "Mistral AI", "Docker", "Tavily API", "Node.js"],
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600",
+      image: holosai1,
       link: "#"
     },
 
@@ -56,7 +61,7 @@ export const SITE_CONFIG = {
       title: "Smart Knowledge Saver & Resurfacing System",
       description: `A knowledge management system that captures, organizes, and resurfaces content intelligently. Features hybrid scraping (Jina + Puppeteer), K-Means clustering, and spaced repetition (30/60/90 days). Includes a Chrome Extension for one-click saving and seamless sync.`,
       tags: ["TypeScript", "PostgreSQL", "Puppeteer", "Chrome Extension", "AI"],
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600",
+      image: smartSaverImg,
       link: "#"
     },
 
@@ -65,7 +70,7 @@ export const SITE_CONFIG = {
       title: "Moodify – Emotion-Based Music Platform",
       description: `A real-time emotion detection system that recommends music based on facial expressions (80%+ accuracy). Uses WebSockets for live streaming, JWT + Redis for authentication, and a modular backend with REST APIs. Optimized processing pipeline by 30%.`,
       tags: ["React", "Node.js", "MongoDB", "WebSockets", "Redis", "Jest"],
-      image: "https://images.unsplash.com/photo-1511376777868-611b54f68947?w=600",
+      image: moodifyImg,
       link: "#"
     }
   ],

@@ -7,7 +7,7 @@ const links = [
   { name: "Home", href: "/" },
   { name: "Work", href: "#projects" },
   { name: "Blog", href: "#blogs" },
-  { name: "Resume", href: "#resume" },
+  { name: "Resume", href: "https://drive.google.com/file/d/1Fo2NV78_IatMhHwRaUuolpM9_klIJcC2/view?usp=drive_link" },
 ];
 
 export default function Navbar() {

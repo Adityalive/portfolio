@@ -54,8 +54,8 @@ export default function Dock() {
     { icon: Home, label: "Home", onClick: () => window.scrollTo(0, 0) },
     { icon: User, label: "About", onClick: () => {} },
     { icon: Code, label: "Projects", onClick: () => {} },
-    { icon: FileText, label: "Resume", onClick: () => {} },
-    { icon: Mail, label: "Contact", onClick: () => window.location.href = "mailto:you@example.com" },
+    { icon: FileText, label: "Resume", onClick: () => window.open("https://drive.google.com/file/d/1Fo2NV78_IatMhHwRaUuolpM9_klIJcC2/view?usp=drive_link", "_blank") },
+    { icon: Mail, label: "Contact", onClick: () => window.location.href = "mailto:adityakumar4176o@gmail.com" },
   ];
 
   return (

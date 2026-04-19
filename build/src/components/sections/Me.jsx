@@ -161,6 +161,32 @@ const Experience = () => {
               </p>
             </div>
           </motion.div>
+
+          {/* Spotify Playlist Embed */}
+          <motion.div
+            variants={cardVariants}
+            className="mt-6 border border-border rounded-2xl overflow-hidden bg-[#121212]"
+          >
+            <div className="p-4 border-b border-border flex items-center justify-between">
+              <span className="text-[11px] font-medium text-muted-foreground uppercase tracking-wider">
+                Current Soundtrack
+              </span>
+              <div className="flex gap-1">
+                {[...Array(3)].map((_, i) => (
+                  <div key={i} className="w-1 h-1 rounded-full bg-green-500 animate-pulse" />
+                ))}
+              </div>
+            </div>
+            <iframe
+              title="Spotify Embed: Recommendation Playlist"
+              src={`https://open.spotify.com/embed/playlist/5RzGutHhpzwWNYkREkUNWp?utm_source=generator&theme=0`}
+              width="100%"
+              height="360"
+              style={{ border: 'none' }}
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+            />
+          </motion.div>
         </motion.div>
 
       </div>

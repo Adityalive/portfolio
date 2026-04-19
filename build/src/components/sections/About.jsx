@@ -28,8 +28,7 @@ const About = () => {
 
           {/* Heading */}
           <h2 className="text-3xl md:text-5xl font-medium leading-[1.1] tracking-tight mb-8">
-            <span className="text-foreground opacity-40">Solving real problems with</span>{' '}
-            <span className="text-foreground block mt-1">purposeful, user-first thinking</span>
+            Building Intelligent <span className="text-foreground opacity-40">Things</span>
           </h2>
 
           {/* Description */}
@@ -39,7 +38,9 @@ const About = () => {
 
           {/* CTA: View Resume */}
           <a 
-            href="#" 
+            href="https://drive.google.com/file/d/1Fo2NV78_IatMhHwRaUuolpM9_klIJcC2/view?usp=drive_link" 
+            target="_blank"
+            rel="noopener noreferrer"
             className="group flex items-center gap-2.5 px-6 py-3 rounded-full text-sm font-bold text-black transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
             style={{
               background: 'linear-gradient(45deg, #bef264, #a3e635)',

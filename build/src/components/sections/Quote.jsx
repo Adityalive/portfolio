@@ -1,33 +1,6 @@
-import React, { useMemo } from 'react';
-
-const QUOTES = [
-  {
-    type: "serif",
-    text: "Wake up to reality. Nothing ever goes as planned in this world.",
-    author: "Madara Uchiha"
-  },
-  {
-    type: "sans",
-    text: "Creating products that not only look great but drive real results.",
-    author: "Aditya Kumar"
-  },
-  {
-    type: "serif",
-    text: "The details are not the details. They make the design.",
-    author: "Charles Eames"
-  },
-  {
-    type: "sans",
-    text: "Simplicity is the ultimate sophistication.",
-    author: "Leonardo da Vinci"
-  }
-];
+import React from 'react';
 
 const Quote = () => {
-  const randomQuote = useMemo(() => {
-    return QUOTES[Math.floor(Math.random() * QUOTES.length)];
-  }, []);
-
   return (
     <section className="relative py-32 px-6 bg-black text-white overflow-hidden">
       {/* ─── VIDEO BACKGROUND with Seamless Masking ─── */}
@@ -52,14 +25,18 @@ const Quote = () => {
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto text-center">
-        <h2 className={`text-2xl md:text-3xl font-medium leading-[1.3] tracking-tight ${randomQuote.type === "serif" ? "italic font-serif text-4xl md:text-5xl" : ""}`}>
-          "{randomQuote.text}"
+        <h2 className="text-2xl md:text-3xl font-medium leading-[1.3] tracking-tight">
+          <span className="text-white opacity-100">
+            Creating products that not only look great but drive real
+          </span>{' '}
+          <span className="text-white opacity-100 font-bold underline decoration-white/20 underline-offset-8">results.</span>{' '}
+          <span className="text-white opacity-40">
+            No more one-sided wins — I create experiences that delight users and deliver business impact.
+          </span>{' '}
+          <span className="text-white opacity-100 font-bold">
+            Let's build something that scales.
+          </span>
         </h2>
-        {randomQuote.author && (
-          <p className="mt-6 text-[10px] font-bold tracking-[0.3em] uppercase text-white/40">
-            — {randomQuote.author}
-          </p>
-        )}
       </div>
     </section>
   );

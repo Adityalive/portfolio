@@ -6,7 +6,7 @@ import React, { useEffect, useRef, useState } from 'react';
  */
 const SpiderRunner = ({
   spriteUrl = "/spider-run-stripe.png",
-  frameWidth = 250, 
+  frameWidth = 250,
   frameHeight = 250,
   totalFrames = 5,
   fps = 12,
@@ -32,7 +32,7 @@ const SpiderRunner = ({
       // Smoothly interpolate position towards mouse
       const dx = mouse.current.x - position.current.x;
       const dy = mouse.current.y - position.current.y;
-      
+
       position.current.x += dx * speed;
       position.current.y += dy * speed;
 
@@ -60,7 +60,7 @@ const SpiderRunner = ({
   const animationDuration = `${totalFrames / fps}s`;
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className="spider-runner-container"
       style={{

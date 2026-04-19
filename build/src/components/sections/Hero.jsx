@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Mail, Check, Twitter, Linkedin, Github, Youtube, Instagram } from "lucide-react";
 import pic from "../../images/ChatGPT Image Dec 19, 2025, 04_44_34 PM (1).png"
 import { SITE_CONFIG } from "../../data/config";
+import { useSpotify } from "../../hooks/useSpotify";
 
 // ─── Animation helper ─────────────────────────────────────────────────────────
 const fade = (delay = 0) => ({
@@ -52,6 +53,7 @@ const EqBars = () => (
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 export const Hero = () => {
   const [copied, setCopied] = useState(false);
+  const nowPlaying = useSpotify();
 
   const copyEmail = () => {
     navigator.clipboard.writeText("hi@aditya.in");
@@ -226,26 +228,42 @@ export const Hero = () => {
             gap: 20,
           }}
         >
-          {/* Spotify Widget (Improved Glassmorphic Design) */}
+          {/* Now Playing Component */}
           <motion.div
-            whileHover={{ scale: 1.02, backgroundColor: "rgba(255, 255, 255, 0.08)" }}
+            whileHover={{ scale: 1.02, backgroundColor: "rgba(255, 255, 255, 0.03)" }}
+            onClick={() => nowPlaying.songUrl && window.open(nowPlaying.songUrl, '_blank')}
             style={{
               display: "flex",
               alignItems: "center",
-              gap: 12,
-              padding: "8px 16px",
-              borderRadius: 12,
+              gap: 20,
+              padding: "14px 24px",
+              borderRadius: 24,
               border: "1px solid rgba(255, 255, 255, 0.1)",
-              background: "rgba(255, 255, 255, 0.05)",
-              backdropFilter: "blur(12px)",
-              cursor: "default",
+              background: "#121212",
+              boxShadow: "0 4px 20px rgba(0,0,0,0.4)",
+              cursor: nowPlaying.songUrl ? "pointer" : "default",
               userSelect: "none",
             }}
           >
             <EqBars />
-            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, lineHeight: 1.4 }}>
-              <div style={{ color: "var(--foreground)", fontWeight: 600, letterSpacing: "-0.01em" }}>Do Dhaari Talwaar</div>
-              <div style={{ color: "var(--muted-foreground)", opacity: 0.5, fontSize: 9 }}>Sohail Sen</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+              <div style={{ 
+                color: "#ffffff", 
+                fontSize: 14, 
+                fontWeight: 700, 
+                letterSpacing: "0.02em",
+                fontFamily: "Inter, sans-serif" 
+              }}>
+                {nowPlaying.isPlaying ? nowPlaying.title : "Not Playing"}
+              </div>
+              <div style={{ 
+                color: "#a1a1aa", 
+                fontSize: 12, 
+                fontWeight: 500,
+                fontFamily: "Inter, sans-serif" 
+              }}>
+                {nowPlaying.isPlaying ? nowPlaying.artist : "Spotify"}
+              </div>
             </div>
           </motion.div>
 
