@@ -8,7 +8,7 @@ const Footer = () => {
         
         {/* Animated Quote */}
         <div className="text-center group italic">
-          <p className="text-xl md:text-2xl text-muted-foreground/80 font-serif leading-relaxed mb-4 transition-all duration-500 group-hover:text-foreground">
+          <p className="text-xl md:text-2xl text-muted-foreground/80 font-normal leading-relaxed mb-4 transition-all duration-500 group-hover:text-foreground">
             "{SITE_CONFIG.footer[0]?.Quote}"
           </p>
           <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-muted-foreground/40">
@@ -20,9 +20,7 @@ const Footer = () => {
           <p>
             Design & Developed by <span className="text-muted-foreground/60">{SITE_CONFIG.name}</span> © {new Date().getFullYear()}
           </p>
-          <div className="flex gap-4">
-             <span>Inspired by Ramx</span>
-          </div>
+
         </div>
       </div>
     </footer>

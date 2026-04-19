@@ -60,7 +60,6 @@ const Experience = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4 }}
-          style={{ fontFamily: "'DM Mono', monospace" }}
           className="text-[11px] tracking-widest uppercase text-muted-foreground mb-2"
         >
           / building in public
@@ -71,8 +70,7 @@ const Experience = () => {
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.06, duration: 0.5 }}
-          style={{ fontFamily: "'DM Serif Display', serif" }}
-          className="text-4xl font-normal italic text-foreground mb-2"
+          className="text-4xl font-semibold italic text-foreground mb-2"
         >
           Just getting started.
         </motion.h2>
@@ -112,14 +110,12 @@ const Experience = () => {
                   </span>
                   <span
                     className={`text-[9px] tracking-wider px-2 py-0.5 rounded-full ${tagStyles[item.tagStyle]}`}
-                    style={{ fontFamily: "'DM Mono', monospace" }}
                   >
                     {item.tag}
                   </span>
                 </div>
                 <span
-                  className="text-muted-foreground"
-                  style={{ fontFamily: "'DM Mono', monospace", fontSize: 11 }}
+                  className="text-muted-foreground ml-auto text-[11px]"
                 >
                   {item.date}
                 </span>

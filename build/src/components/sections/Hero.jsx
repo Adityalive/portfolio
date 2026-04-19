@@ -14,12 +14,12 @@ const fade = (delay = 0) => ({
 
 // ─── Social links ────────────────────────────────────────────────────────────
 const socialLinks = [
-  { icon: Twitter, href: "https://x.com/Adityalive000", label: "Twitter" },
-  { icon: Linkedin, href: "https://linkedin.com/in/your-id", label: "LinkedIn" },
-  { icon: Github, href: "https://github.com/Adityalive", label: "GitHub" },
-  { icon: Youtube, href: "https://youtube.com", label: "YouTube" },
-  { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
-  { icon: Mail, href: "mailto:hi@aditya.in", label: "Email" },
+  { icon: Twitter, href: SITE_CONFIG.socials.twitter || SITE_CONFIG.socials.x, label: "Twitter" },
+  { icon: Linkedin, href: SITE_CONFIG.socials.linkedin, label: "LinkedIn" },
+  { icon: Github, href: SITE_CONFIG.socials.github, label: "GitHub" },
+  { icon: Youtube, href: SITE_CONFIG.socials.youtube, label: "YouTube" },
+  { icon: Instagram, href: SITE_CONFIG.socials.instagram, label: "Instagram" },
+  { icon: Mail, href: SITE_CONFIG.socials.mail, label: "Email" },
 ];
 
 // ─── Animated Spotify equalizer bars ─────────────────────────────────────────
@@ -56,15 +56,17 @@ export const Hero = () => {
   const nowPlaying = useSpotify();
 
   const copyEmail = () => {
-    navigator.clipboard.writeText("hi@aditya.in");
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    const email = SITE_CONFIG.socials.mail?.replace('mailto:', '') || "";
+    if (email) {
+      navigator.clipboard.writeText(email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
   };
 
   return (
     <section
       className="pt-36 pb-12 px-6"
-      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
     >
       <div className="max-w-3xl mx-auto">
 
@@ -145,10 +147,10 @@ export const Hero = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               style={{
-                fontFamily: "'Bebas Neue', sans-serif",
                 fontSize: "clamp(64px, 12vw, 96px)",
+                fontWeight: 800,
                 lineHeight: 0.88,
-                letterSpacing: "0.01em",
+                letterSpacing: "-0.03em",
                 color: "var(--foreground)",
                 marginBottom: 14,
               }}
@@ -192,7 +194,7 @@ export const Hero = () => {
                 onMouseLeave={e => (e.currentTarget.style.color = "var(--muted-foreground)")}
               >
                 {copied ? <Check size={11} /> : <Mail size={11} />}
-                hi@aditya.in
+                {SITE_CONFIG.socials.mail?.replace('mailto:', '')}
               </button>
             </div>
           </div>

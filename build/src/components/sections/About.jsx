@@ -11,7 +11,7 @@ const About = () => {
         <div className="w-full md:w-[40%]">
           <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/10 shadow-xl shadow-white/5">
             <img 
-              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop&q=80" 
+              src="/ChatGPT Image Apr 19, 2026, 11_00_41 PM.png" 
               alt="Portrait" 
               className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700 hover:scale-105"
             />

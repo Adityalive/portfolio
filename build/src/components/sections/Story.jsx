@@ -15,6 +15,13 @@ const Story = () => {
   const textOpacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
   const textY = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [40, 0, 0, -40]);
 
+  // Color transition for the main header (mapping from muted to bright)
+  const headerColor = useTransform(
+    scrollYProgress,
+    [0.1, 0.4, 0.6, 0.9],
+    ["rgba(255,255,255,0.1)", "rgba(255,255,255,1)", "rgba(255,255,255,1)", "rgba(255,255,255,0.1)"]
+  );
+
   return (
     <section 
       ref={sectionRef}
@@ -62,18 +69,18 @@ const Story = () => {
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true, margin: "-100px" }}
         >
-          <p className="text-muted-foreground text-lg md:text-xl font-medium tracking-widest mb-6 uppercase" style={{ fontFamily: "'JetBrains Mono', sans-serif", opacity: 0.6 }}>
+          <p className="text-muted-foreground text-sm md:text-base font-medium tracking-[0.4em] mb-8 uppercase opacity-60">
             I bring a sense of
           </p>
 
-          <h2 
-            className="text-5xl md:text-8xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-foreground via-foreground/90 to-foreground/40 leading-[1.05] mb-8"
-            style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+          <motion.h2 
+            style={{ color: headerColor }}
+            className="text-5xl md:text-8xl font-bold tracking-tight leading-[1.05] mb-8"
           >
             Story, language & <br className="hidden md:block" /> visual awareness
-          </h2>
+          </motion.h2>
 
-          <p className="text-muted-foreground text-lg md:text-xl font-medium tracking-tight" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+          <p className="text-muted-foreground text-lg md:text-xl font-medium tracking-tight">
             to my work
           </p>
         </motion.div>

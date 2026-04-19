@@ -43,7 +43,9 @@ const Contact = () => {
 
         {/* CTA Button */}
         <a 
-          href={SITE_CONFIG.socials.mail}
+          href={SITE_CONFIG.socials.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
           className="group flex items-center gap-3 px-10 py-5 rounded-full font-bold text-black transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
           style={{
             background: 'linear-gradient(45deg, #bef264, #a3e635)',

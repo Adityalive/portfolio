@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 
 import { Hero } from './components/sections/Hero';
 import Story from './components/sections/Story';
@@ -11,21 +12,47 @@ import CursorCat from './components/ui/CursorCat';
 import Navbar from './components/sections/Navbar';
 import Detailroute from './components/sections/Projects2/Detailroute';
 import Footer from './components/sections/Footer';
+import Preloader from './components/ui/Preloader';
 
 const App = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // 1. Hide the native black screen instantly once React mounts
+    const nativeLoader = document.getElementById('global-loader');
+    if (nativeLoader) {
+      nativeLoader.classList.add('fade-out');
+      setTimeout(() => nativeLoader.remove(), 500);
+    }
+
+    // 2. Logic for the Lottie Preloader
+    const handleLoad = () => {
+      // Small artificial delay to appreciate the animation if it's too fast
+      setTimeout(() => setLoading(false), 2400); 
+    };
+
+    if (document.readyState === 'complete') {
+      handleLoad();
+    } else {
+      window.addEventListener('load', handleLoad);
+      const safetyTimer = setTimeout(handleLoad, 4000); // 4s max safety
+      return () => {
+        window.removeEventListener('load', handleLoad);
+        clearTimeout(safetyTimer);
+      };
+    }
+  }, []);
+
   return (
-    // UPDATED LINE BELOW:
-    // 1. bg-white dark:bg-black -> Handles background color switching
-    // 2. text-gray-900 dark:text-white -> Handles text color switching
-    // 3. min-h-screen -> Ensures the background covers the whole page height
-    // 4. transition-colors -> Makes the switch smooth instead of instant
     <div className="min-h-screen bg-background font-inter">
+      <AnimatePresence mode="wait">
+        {loading && <Preloader key="lottie-loader" />}
+      </AnimatePresence>
 
       <Navbar />
       <CursorCat />
 
       <Routes>
-        {/* Home Route */}
         <Route
           path="/"
           element={
@@ -41,8 +68,6 @@ const App = () => {
             </>
           }
         />
-
-        {/* Detail Route */}
         <Route path="/project/:id" element={<Detailroute />} />
       </Routes>
 
