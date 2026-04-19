@@ -5,7 +5,8 @@ import { Quote } from "lucide-react";
 export const SITE_CONFIG = {
   name: "Aditya",
   role: "CSE Student & Full Stack Developer",
-  description: `I'm a Full Stack Web Developer and passionate about building impactful digital products. I specialize in crafting MVPs that solve real-world problems, with a focus on clean architecture, intuitive UI, and scalable backend systems. Whether it's shipping fast or diving deep into complex challenges, I thrive on turning ideas into working software.`,
+  description: `I'm a Full Stack Web Developer focused on building real-world, production-ready systems. I specialize in AI-powered applications, scalable backend architectures, and rapid MVP development. I care about solving meaningful problems, shipping fast, and continuously improving based on real usage.`,
+
   socials: {
     github: "https://github.com/Adityalive",
     linkedin: "https://linkedin.com/in/your-id",
@@ -15,6 +16,7 @@ export const SITE_CONFIG = {
     instagram: "https://instagram.com",
     mail: "mailto:hi@aditya.in"
   },
+
   experience: [
     {
       company: "good day",
@@ -38,41 +40,44 @@ export const SITE_CONFIG = {
       isCurrent: false
     }
   ],
+
   projects: [
     {
-      id: "project-1", // This ID must match ProductsDetails below
-      title: "AI Code Reviewer",
-      description: `A MERN stack platform leveraging Generative AI to automate code reviews. It provides real-time static analysis, detects security vulnerabilities, and offers intelligent refactoring suggestions to optimize performance`,
-      tags: ["React", "Node.js", "AI API"],
-      image: "https://images.unsplash.com/photo-1766155072349-aa536dbd6ad1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxOXx8fGVufDB8fHx8fA%3D%3D",
-      link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      id: "project-1",
+      title: "HolosAI – Deep Research Pipeline",
+      description: `A multi-agent AI research system that automates deep research workflows. It generates structured reports (Abstract, Background, Applications, Challenges, Key Findings) in under 30 seconds using query expansion, parallel web search, and LLM-based synthesis. Reduced manual research time by 90%+.`,
+      tags: ["LangChain", "Mistral AI", "Docker", "Tavily API", "Node.js"],
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600",
+      link: "#"
     },
+
     {
-      id: "project-2", // This ID must match ProductsDetails below
-      title: "FOOD TRACKER",
-      description: "A Computer Vision system developed using Deep Learning (CNNs) to accurately detect and classify food items in real-time. It leverages advanced object detection algorithms to analyze image data for automated dietary tracking and nutritional estimation.",
-      tags: ["MERN", "OpenAI"],
-      image: "https://plus.unsplash.com/premium_vector-1734707879403-19be24212849?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      link: "#",
+      id: "project-2",
+      title: "Smart Knowledge Saver & Resurfacing System",
+      description: `A knowledge management system that captures, organizes, and resurfaces content intelligently. Features hybrid scraping (Jina + Puppeteer), K-Means clustering, and spaced repetition (30/60/90 days). Includes a Chrome Extension for one-click saving and seamless sync.`,
+      tags: ["TypeScript", "PostgreSQL", "Puppeteer", "Chrome Extension", "AI"],
+      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600",
+      link: "#"
     },
-     {
-      id: "project-3", // This ID must match ProductsDetails below
-      title: "Tiny Cats",
-      description: "A Computer Vision system developed using Deep Learning (CNNs) to accurately detect and classify food items in real-time. It leverages advanced object detection algorithms to analyze image data for automated dietary tracking and nutritional estimation.",
-      tags: ["MERN", "OpenAI"],
-      image: "https://plus.unsplash.com/premium_vector-1734707879403-19be24212849?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      link: "#",
-    },
+
+    {
+      id: "project-3",
+      title: "Moodify – Emotion-Based Music Platform",
+      description: `A real-time emotion detection system that recommends music based on facial expressions (80%+ accuracy). Uses WebSockets for live streaming, JWT + Redis for authentication, and a modular backend with REST APIs. Optimized processing pipeline by 30%.`,
+      tags: ["React", "Node.js", "MongoDB", "WebSockets", "Redis", "Jest"],
+      image: "https://images.unsplash.com/photo-1511376777868-611b54f68947?w=600",
+      link: "#"
+    }
   ],
-  footer:[
+
+  footer: [
     {
-      Quote:"Wake up to reality. Nothing ever goes as planned in this world.",
-      author:"Madara Uchiha"
+      Quote: "Wake up to reality. Nothing ever goes as planned in this world.",
+      author: "Madara Uchiha"
     },
     {
       Quote: "What if it all works out in the end?",
-      author:"Unknown"
+      author: "Unknown"
     }
   ]
 };
-

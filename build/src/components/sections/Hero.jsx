@@ -138,7 +138,10 @@ export const Hero = () => {
           </div>
 
           <div style={{ flex: 1, paddingBottom: 4 }}>
-            <h1
+            <motion.h1
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
               style={{
                 fontFamily: "'Bebas Neue', sans-serif",
                 fontSize: "clamp(64px, 12vw, 96px)",
@@ -149,12 +152,16 @@ export const Hero = () => {
               }}
             >
               {SITE_CONFIG.name}
-            </h1>
+            </motion.h1>
 
             <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 6 }}>
-              {["Dev", "Creator"].map((chip) => (
-                <span
+              {["Dev", "Creator"].map((chip, idx) => (
+                <motion.span
                   key={chip}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.5 + (idx * 0.1) }}
+                  whileHover={{ scale: 1.05, backgroundColor: "var(--border)" }}
                   style={{
                     fontSize: 12, fontWeight: 500,
                     padding: "4px 10px", borderRadius: 6,
@@ -164,7 +171,7 @@ export const Hero = () => {
                   }}
                 >
                   {chip}
-                </span>
+                </motion.span>
               ))}
               <span style={{ width: 3, height: 3, borderRadius: "50%", background: "var(--border)", display: "inline-block" }} />
               <button
@@ -191,7 +198,10 @@ export const Hero = () => {
 
         {/* ── Bio ─────────────────────────────────────────────────────── */}
         <motion.p
-          {...fade(0.18)}
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          viewport={{ once: true }}
           style={{
             fontSize: 16, fontWeight: 300,
             color: "var(--muted-foreground)",

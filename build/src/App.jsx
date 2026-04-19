@@ -7,6 +7,7 @@ import { Projects } from './components/sections/Projects';
 import About from './components/sections/About';
 import Quote from './components/sections/Quote';
 import Contact from './components/sections/Contact';
+import CursorCat from './components/ui/CursorCat';
 import Navbar from './components/sections/Navbar';
 import Detailroute from './components/sections/Projects2/Detailroute';
 import Footer from './components/sections/Footer';
@@ -21,6 +22,7 @@ const App = () => {
     <div className="min-h-screen bg-background font-inter">
 
       <Navbar />
+      <CursorCat />
 
       <Routes>
         {/* Home Route */}
