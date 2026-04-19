@@ -6,7 +6,7 @@ const Contact = () => {
   const email = SITE_CONFIG.socials.mail?.replace('mailto:', '') || 'your.email@example.com';
 
   return (
-    <section id="contact" className="relative py-40 px-6 bg-black text-white text-center overflow-hidden font-inter">
+    <section id="contact" className="relative py-40 px-6 bg-background text-foreground text-center overflow-hidden font-inter">
       {/* ─── VIDEO BACKGROUND ─── */}
       <div className="absolute inset-0 z-0">
         <video 
@@ -21,7 +21,7 @@ const Contact = () => {
           <source src="https://www.pexels.com/download/video/27462830/" type="video/mp4" />
         </video>
         {/* Overlay for better readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/20 to-background/60" />
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">

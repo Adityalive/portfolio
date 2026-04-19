@@ -4,7 +4,7 @@ import { ArrowUpRight } from 'lucide-react';
 
 const About = () => {
   return (
-    <section id="about" className="py-24 px-6 bg-black text-white overflow-hidden font-inter">
+    <section id="about" className="py-24 px-6 bg-background text-foreground overflow-hidden font-inter">
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-20">
         
         {/* ─── LEFT: PORTRAIT IMAGE ─── */}
@@ -22,18 +22,18 @@ const About = () => {
         <div className="w-full md:w-[60%] flex flex-col items-start text-left">
           
           {/* Badge */}
-          <div className="mb-6 px-3 py-1 rounded-full bg-white/10 border border-white/5 text-[9px] font-bold tracking-[0.2em] uppercase text-white/60">
+          <div className="mb-6 px-3 py-1 rounded-full bg-white/10 border border-white/5 text-[9px] font-bold tracking-[0.2em] uppercase text-muted-foreground">
             About
           </div>
 
           {/* Heading */}
           <h2 className="text-3xl md:text-5xl font-medium leading-[1.1] tracking-tight mb-8">
-            <span className="text-white opacity-40">Solving real problems with</span>{' '}
-            <span className="text-white block mt-1">purposeful, user-first thinking</span>
+            <span className="text-foreground opacity-40">Solving real problems with</span>{' '}
+            <span className="text-foreground block mt-1">purposeful, user-first thinking</span>
           </h2>
 
           {/* Description */}
-          <p className="text-base md:text-lg text-white/40 leading-relaxed mb-10 max-w-md">
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-10 max-w-md">
             {SITE_CONFIG.description}
           </p>
 

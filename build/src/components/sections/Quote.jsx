@@ -3,8 +3,14 @@ import React from 'react';
 const Quote = () => {
   return (
     <section className="relative py-32 px-6 bg-black text-white overflow-hidden">
-      {/* ─── VIDEO BACKGROUND ─── */}
-      <div className="absolute inset-0 z-0">
+      {/* ─── VIDEO BACKGROUND with Seamless Masking ─── */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)',
+          maskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)'
+        }}
+      >
         <video 
           autoPlay 
           muted 
@@ -15,8 +21,8 @@ const Quote = () => {
           <source src="https://videos.pexels.com/video-files/7762075/12111166_1920_1080_30fps.mp4" type="video/mp4" />
           <source src="https://www.pexels.com/download/video/7762075/" type="video/mp4" />
         </video>
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/20" />
+        {/* Subtle Overlay to ensure text contrast */}
+        <div className="absolute inset-0 bg-black/40" />
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto text-center">
