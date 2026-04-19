@@ -13,7 +13,7 @@ export const ProductsDetails = [
     techstack: ["LangChain", "Mistral AI", "Node.js", "Docker", "Tavily API"],
 
     img: holosai1,
-    liveDemoLink: "#",
+    liveDemoLink: "https://perplexity-2bk6.onrender.com",
     sourceCodeLink: "https://github.com/Adityalive",
 
     overview:
@@ -53,7 +53,7 @@ export const ProductsDetails = [
     ],
 
     img: smartSaverImg,
-    liveDemoLink: "#",
+    liveDemoLink: "https://smart-search-4kcq.onrender.com/",
     sourceCodeLink: "https://github.com/Adityalive",
 
     overview:
@@ -94,7 +94,7 @@ export const ProductsDetails = [
     ],
 
     img: moodifyImg,
-    liveDemoLink: "#",
+    liveDemoLink: "https://moodify-ou8b.onrender.com/",
     sourceCodeLink: "https://github.com/Adityalive",
 
     overview:

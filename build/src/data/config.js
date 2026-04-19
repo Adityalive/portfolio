@@ -53,7 +53,7 @@ export const SITE_CONFIG = {
       description: `A multi-agent AI research system that automates deep research workflows. It generates structured reports (Abstract, Background, Applications, Challenges, Key Findings) in under 30 seconds using query expansion, parallel web search, and LLM-based synthesis. Reduced manual research time by 90%+.`,
       tags: ["LangChain", "Mistral AI", "Docker", "Tavily API", "Node.js"],
       image: holosai1,
-      link: "#"
+      link: "https://perplexity-2bk6.onrender.com"
     },
 
     {
@@ -62,7 +62,7 @@ export const SITE_CONFIG = {
       description: `A knowledge management system that captures, organizes, and resurfaces content intelligently. Features hybrid scraping (Jina + Puppeteer), K-Means clustering, and spaced repetition (30/60/90 days). Includes a Chrome Extension for one-click saving and seamless sync.`,
       tags: ["TypeScript", "PostgreSQL", "Puppeteer", "Chrome Extension", "AI"],
       image: smartSaverImg,
-      link: "#"
+      link: "https://smart-search-4kcq.onrender.com/"
     },
 
     {
@@ -71,7 +71,7 @@ export const SITE_CONFIG = {
       description: `A real-time emotion detection system that recommends music based on facial expressions (80%+ accuracy). Uses WebSockets for live streaming, JWT + Redis for authentication, and a modular backend with REST APIs. Optimized processing pipeline by 30%.`,
       tags: ["React", "Node.js", "MongoDB", "WebSockets", "Redis", "Jest"],
       image: moodifyImg,
-      link: "#"
+      link: "https://moodify-ou8b.onrender.com/"
     }
   ],
 
