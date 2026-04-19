@@ -1,190 +1,98 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { SITE_CONFIG } from '../../data/config';
+import { Link } from 'react-router-dom';
+import { ArrowUpRight } from 'lucide-react';
 
-// Each project gets a distinct card color palette
-const CARD_THEMES = [
-  {
-    bg: '#ffffff',
-    categoryColor: '#6b6b6b',
-    titleColor: '#2563eb', // blue
-    subtitleColor: '#2563eb',
-    border: '#e5e7eb',
-  },
-  {
-    bg: '#f0fdf4',
-    categoryColor: '#4b7c5c',
-    titleColor: '#15803d', // green
-    subtitleColor: '#15803d',
-    border: '#bbf7d0',
-  },
-  {
-    bg: '#fff7ed',
-    categoryColor: '#7c5a1e',
-    titleColor: '#d97706', // amber
-    subtitleColor: '#d97706',
-    border: '#fde68a',
-  },
-  {
-    bg: '#fef2f2',
-    categoryColor: '#7f1d1d',
-    titleColor: '#dc2626', // red
-    subtitleColor: '#dc2626',
-    border: '#fecaca',
-  },
-];
+// ─── Stagger Variants ───────────────────────────────────
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.18 } }
+};
 
-// Placeholder image that fills the correct aspect ratio
-const PlaceholderImg = ({ color }) => (
-  <div
-    style={{
-      width: '100%',
-      aspectRatio: '16/9',
-      background: `${color}22`,
-      border: `1px solid ${color}44`,
-      borderRadius: '6px',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }}
-  >
-    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke={`${color}88`} strokeWidth="1.2">
-      <rect x="3" y="3" width="18" height="18" rx="2" />
-      <circle cx="8.5" cy="8.5" r="1.5" />
-      <path d="M21 15l-5-5L5 21" />
-    </svg>
-  </div>
-);
+const cardVariants = {
+  hidden:   { opacity: 0, y: 60 },
+  visible:  {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', stiffness: 70, damping: 14 }
+  }
+};
 
+// ─── Component ──────────────────────────────────────────
 export const Projects = () => {
   return (
-    <section
-      id="projects"
-      className="py-20 px-6 md:px-12 bg-background font-inter"
-    >
-      <div className="max-w-3xl mx-auto">
+    <section id="projects" className="py-20 px-6 md:px-16 bg-white font-inter">
+      <div className="max-w-4xl mx-auto">
 
-        {/* ─── SECTION LABEL ─── */}
-        <div className="flex items-center gap-3 mb-4">
-          <span className="text-base font-bold tracking-widest uppercase text-foreground/80">WORK</span>
-          <div className="w-6 h-6 rounded-full bg-secondary/60 border border-border/50" />
-        </div>
-
-        {/* ─── SUBTITLE ─── */}
-        <p className="text-sm text-muted-foreground mb-14 max-w-md">
-          Below are some select projects from the world of design and technology.
+        {/* Section Label */}
+        <p className="text-[10px] font-bold tracking-[0.25em] uppercase text-gray-400 mb-10">
+          Selected Work
         </p>
 
-        {/* ─── CARD GRID ─── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {SITE_CONFIG.projects.map((project, index) => {
-            const theme = CARD_THEMES[index % CARD_THEMES.length];
-            const tag = project.tags?.[0] ?? 'FULL STACK';
-            return (
-              <Link
-                key={project.id}
-                to={`/project/${project.id}`}
-                className="group block rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
-                style={{
-                  background: theme.bg,
-                  border: `1px solid ${theme.border}`,
-                }}
-              >
-                {/* Card inner padding */}
-                <div className="p-6 flex flex-col gap-4">
-
-                  {/* Category tag & Live Button */}
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      {/* little pie icon */}
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <circle cx="7" cy="7" r="6" stroke={theme.categoryColor} strokeWidth="1.2" />
-                        <path d="M7 7 L7 1 A6 6 0 0 1 13 7 Z" fill={theme.categoryColor} opacity="0.5" />
-                      </svg>
-                      <span
-                        style={{
-                          fontFamily: "'Courier New', monospace",
-                          fontSize: '10px',
-                          fontWeight: 700,
-                          letterSpacing: '0.2em',
-                          textTransform: 'uppercase',
-                          color: theme.categoryColor,
-                        }}
-                      >
-                        {tag}
-                      </span>
-                    </div>
-
-                    {/* LIVE BUTTON */}
-                    {project.link && (
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          window.open(project.link, '_blank');
-                        }}
-                        className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-foreground/5 hover:bg-foreground/10 transition-colors text-[9px] font-bold tracking-widest text-muted-foreground uppercase border border-border/50"
-                      >
-                        <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                        Live
-                      </button>
-                    )}
-                  </div>
-
-                  {/* Project title — big pixel/retro look */}
-                  <h3
-                    style={{
-                      fontFamily: "'Neuton', serif",
-                      fontSize: 'clamp(24px, 3.5vw, 34px)',
-                      fontWeight: 700,
-                      lineHeight: 1.15,
-                      color: theme.titleColor,
-                      letterSpacing: '-0.01em',
-                    }}
-                  >
+        {/* Staggered Card List */}
+        <motion.div
+          className="flex flex-col gap-16 md:gap-20"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-40px' }}
+        >
+          {SITE_CONFIG.projects.map((project, index) => (
+            <motion.div
+              key={project.id || index}
+              variants={cardVariants}
+              className="group relative h-[200px] grid grid-cols-1 md:grid-cols-2 border border-gray-100 rounded-none overflow-hidden transition-all duration-300 hover:shadow-sm"
+            >
+              {/* ─── LEFT: TEXT ─── */}
+              <div className="flex flex-col justify-between p-6 md:p-8 bg-white h-full">
+                <div>
+                  <h3 className="text-xl md:text-2xl font-medium tracking-tight text-gray-900 mb-2 leading-tight">
                     {project.title}
                   </h3>
-
-                  {/* Short subtitle / tags line */}
-                  <p
-                    style={{
-                      fontFamily: "'Courier New', monospace",
-                      fontSize: '10px',
-                      fontWeight: 700,
-                      letterSpacing: '0.15em',
-                      textTransform: 'uppercase',
-                      color: theme.subtitleColor,
-                    }}
-                  >
-                    {project.tags?.join(' · ')}
+                  <p className="text-gray-400 text-xs leading-relaxed max-w-sm line-clamp-2">
+                    {project.description}
                   </p>
+                </div>
 
-                  {/* Thumbnail placeholder (user will swap in their own images later) */}
-                  <div className="mt-2">
-                    {project.image ? (
-                      <div
-                        style={{
-                          width: '100%',
-                          aspectRatio: '16/9',
-                          borderRadius: '6px',
-                          overflow: 'hidden',
-                        }}
-                      >
-                        <img
-                          src={project.image}
-                          alt={project.title}
-                          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                        />
-                      </div>
-                    ) : (
-                      <PlaceholderImg color={theme.titleColor} />
-                    )}
+                <div className="flex items-center justify-between mt-auto">
+                  <span className="text-[10px] font-mono text-gray-200 tracking-widest">
+                    {project.year || '2025'}
+                  </span>
+                  <div className="flex items-center gap-3">
+                    <a
+                      href={project.link || "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-5 py-2 border border-black text-black text-[10px] font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all duration-300 rounded-sm"
+                    >
+                      Live Demo
+                      <ArrowUpRight size={12} />
+                    </a>
+                    <Link
+                      to={`/project/${project.id}`}
+                      className="flex items-center gap-2 px-5 py-2 border border-black text-black text-[10px] font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all duration-300 rounded-sm"
+                    >
+                      View Project
+                      <ArrowUpRight size={12} />
+                    </Link>
                   </div>
                 </div>
-              </Link>
-            );
-          })}
-        </div>
+              </div>
+
+              {/* ─── RIGHT: IMAGE ─── */}
+              <div className="relative h-full overflow-hidden bg-gray-50">
+                <img
+                  src={project.image || 'https://via.placeholder.com/800x600'}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <span className="absolute top-3 right-3 text-white/40 text-[9px] font-mono">+</span>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
       </div>
     </section>
   );

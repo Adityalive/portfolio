@@ -14,14 +14,14 @@ const Contact = () => {
           muted 
           loop 
           playsInline
-          className="w-full h-full object-cover opacity-50"
+          className="w-full h-full object-cover opacity-70"
         >
           <source src="https://videos.pexels.com/video-files/27462830/12170366_1920_1080_30fps.mp4" type="video/mp4" />
           {/* Fallback for the redirect link provided by user */}
           <source src="https://www.pexels.com/download/video/27462830/" type="video/mp4" />
         </video>
         {/* Overlay for better readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/60" />
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">

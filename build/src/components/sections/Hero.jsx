@@ -5,7 +5,7 @@ import { SITE_CONFIG } from "../../data/config";
 
 export const Hero = () => {
   const socialLinks = [
-    { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
+    { icon: Twitter, href: "https://x.com/Adityalive000", label: "Twitter" },
     { icon: Linkedin, href: "https://linkedin.com/in/your-id", label: "LinkedIn" },
     { icon: Github, href: "https://github.com/Adityalive", label: "GitHub" },
     { icon: Youtube, href: "https://youtube.com", label: "YouTube" },
@@ -27,9 +27,9 @@ export const Hero = () => {
           <div className="relative group">
             <div className="w-32 h-32 rounded-3xl bg-yellow-400 p-1 shadow-2xl transition-transform duration-500 hover:scale-105">
               <div className="w-full h-full rounded-[1.4rem] overflow-hidden bg-black flex items-center justify-center">
-                <img 
-                  src={pic} 
-                  alt={SITE_CONFIG.name} 
+                <img
+                  src={pic}
+                  alt={SITE_CONFIG.name}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -50,7 +50,7 @@ export const Hero = () => {
               <span className="text-muted-foreground/30">•</span>
               <span>Polymath</span>
               <span className="text-muted-foreground/30">•</span>
-              <button 
+              <button
                 onClick={copyEmail}
                 className="flex items-center gap-1.5 hover:text-foreground transition-colors group"
                 title="Click to copy email"
@@ -59,7 +59,7 @@ export const Hero = () => {
                 <Copy className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
               </button>
             </div>
-            
+
             <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">
               Love to build cool stuff, content creator & polymath.
             </p>
@@ -69,7 +69,7 @@ export const Hero = () => {
         {/* Spotify Placeholder (Optional for Feel) */}
         <div className="flex items-center gap-3 text-sm text-muted-foreground mb-8 py-3 px-4 rounded-xl bg-secondary/30 border border-border/50 w-fit">
           <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
-             <div className="w-2.5 h-2.5 bg-background rounded-full" />
+            <div className="w-2.5 h-2.5 bg-background rounded-full" />
           </div>
           <span>Last played <span className="text-muted-foreground/40">—</span> Do Dhaari Talwaar · Sohail Sen</span>
         </div>
