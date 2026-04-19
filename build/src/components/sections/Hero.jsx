@@ -1,80 +1,95 @@
 import React from 'react'
-import { FileText, Send, Github, Linkedin, Youtube, Instagram, Mail, Twitter } from "lucide-react";
+import { Github, Linkedin, Youtube, Instagram, Mail, Twitter, Copy, ExternalLink, MessageCircle } from "lucide-react";
 import pic from "../../images/ChatGPT Image Dec 19, 2025, 04_44_34 PM (1).png"
-import {SITE_CONFIG} from "../../data/config";
-import Button from "../ui/Button";
-import { TechBadge } from "../ui/TechBadge";
+import { SITE_CONFIG } from "../../data/config";
+
 export const Hero = () => {
   const socialLinks = [
     { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-    { icon: Linkedin, href: "https://github.com/Adityalive", label: "LinkedIn" },
-    { icon: Github, href: "https://github.com", label: "GitHub" },
+    { icon: Linkedin, href: "https://linkedin.com/in/your-id", label: "LinkedIn" },
+    { icon: Github, href: "https://github.com/Adityalive", label: "GitHub" },
     { icon: Youtube, href: "https://youtube.com", label: "YouTube" },
     { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
-    { icon: Mail, href: "mailto:hello@example.com", label: "Email" },
+    { icon: Mail, href: "mailto:your-email@example.com", label: "Email" },
   ];
-  return (    
-      <section className="pt-32 pb-16 px-4 md:px-6">
-      <div className="conatiner mx-auto max-w-3xl">
-        {/* Profile Image with Status */}
-        <div className="relative w-24 h-24 mb-6 rounded-[50%]">
-          <div className="w-24 h-24 rounded-full  bg-gradient-to-br from-secondary to-muted overflow-hidden border-2 border-border">
-            <div className="w-full h-full bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
-              <img src={pic} alt="Profile" className="w-full h-full object-cover" />
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText("your-email@example.com");
+    // Could add a toast notification here if available
+  };
+
+  return (
+    <section className="pt-40 pb-12 px-6 font-inter">
+      <div className="max-w-3xl mx-auto">
+        {/* Profile Header */}
+        <div className="flex flex-col md:flex-row gap-8 items-start mb-12">
+          {/* Avatar - Rounded Square Pixel Art Style */}
+          <div className="relative group">
+            <div className="w-32 h-32 rounded-3xl bg-yellow-400 p-1 shadow-2xl transition-transform duration-500 hover:scale-105">
+              <div className="w-full h-full rounded-[1.4rem] overflow-hidden bg-black flex items-center justify-center">
+                <img 
+                  src={pic} 
+                  alt={SITE_CONFIG.name} 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+            {/* Status Indicator */}
+            <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-background rounded-full flex items-center justify-center">
+              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_#22c55e]" />
             </div>
           </div>
-          <div className="absolute bottom-0 right-0 w-10 h-10 bg-transparent rounded-full  flex items-center justify-center">
-    <div className="relative flex h-3 w-3">
-        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-        <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-    </div>
-    </div>    
-        </div>
-         {/* Main Heading */}
-        <h1 className="text-base md:text-4xl lg:text-5xl  font-neuton font-medium mb-6 leading-tight animate-slide-up">
-          Hi, I'm {SITE_CONFIG.name} —{" "}
-  <span className="text-muted-foreground text-opacity-70 text-slate-800">A Full Stack web developer.</span>
-</h1>
-<p className="text-lg text-muted-foreground mb-6 leading-relaxed animate-slide-up" style={{ animationDelay: "0.1s" }}>
-          I build interactive web apps using{" "}
-          <TechBadge name="JavaScript" color="blue" />,{" "}
-          <TechBadge name="React" color="cyan" />,{" "}
-          <TechBadge name="Next.js" color="default" />,{" "}
-          <TechBadge name="npm" color="orange" /> and{" "}
-          <TechBadge name="MongoDb" color="blue" />.{" "}
-          With a focus on <span className="text-foreground font-medium">UI</span> design.
-          Enthusiastic about <span className="text-foreground font-medium">Three.js</span>,
-          driven by a keen eye for design.
-        </p>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-wrap gap-3 mb-8 animate-slide-up" style={{ animationDelay: "0.2s" }}>
-          <Button variant="outline" className="gap-2">
-            <FileText className="w-4 h-4" />
-            Resume / CV
-          </Button>
-          <Button className="gap-2">
-            <Send className="w-4 h-4 " />
-            Get in touch
-          </Button>
+          {/* Name and Title */}
+          <div className="flex-1 pt-2">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-2 text-foreground">
+              {SITE_CONFIG.name}
+            </h1>
+            <div className="flex flex-wrap items-center gap-x-2 text-muted-foreground text-lg mb-6">
+              <span>{SITE_CONFIG.role.split('&')[0].trim()}</span>
+              <span className="text-muted-foreground/30">•</span>
+              <span>Polymath</span>
+              <span className="text-muted-foreground/30">•</span>
+              <button 
+                onClick={copyEmail}
+                className="flex items-center gap-1.5 hover:text-foreground transition-colors group"
+                title="Click to copy email"
+              >
+                <span>hi@aditya.in</span>
+                <Copy className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
+              </button>
+            </div>
+            
+            <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">
+              Love to build cool stuff, content creator & polymath.
+            </p>
+          </div>
         </div>
-        {/* Social Links */}
-        <div className="flex items-center gap-4 animate-slide-up" style={{ animationDelay: "0.3s" }}>
+
+        {/* Spotify Placeholder (Optional for Feel) */}
+        <div className="flex items-center gap-3 text-sm text-muted-foreground mb-8 py-3 px-4 rounded-xl bg-secondary/30 border border-border/50 w-fit">
+          <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+             <div className="w-2.5 h-2.5 bg-background rounded-full" />
+          </div>
+          <span>Last played <span className="text-muted-foreground/40">—</span> Do Dhaari Talwaar · Sohail Sen</span>
+        </div>
+
+        {/* Social Icons Row */}
+        <div className="flex flex-wrap items-center gap-6 pt-2">
           {socialLinks.map((social) => (
             <a
               key={social.label}
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:scale-110"
               aria-label={social.label}
             >
-              <social.icon className="w-5 h-5" />
+              <social.icon className="w-6 h-6" />
             </a>
           ))}
         </div>
-        </div>
-      </section>
-   
+      </div>
+    </section>
   )
 }

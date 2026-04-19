@@ -1,230 +1,339 @@
-import React from 'react'
-import { SITE_CONFIG } from '../../../data/config'; // Ensure this path is correct
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { SITE_CONFIG } from '../../../data/config';
+import { ArrowLeft } from 'lucide-react';
+
+const SectionHeading = ({ children }) => (
+  <h2
+    style={{
+      fontFamily: "'Neuton', 'Georgia', serif",
+      fontSize: 'clamp(24px, 3vw, 36px)',
+      fontWeight: 700,
+      color: '#111',
+      lineHeight: 1.2,
+      marginBottom: '20px',
+    }}
+  >
+    {children}
+  </h2>
+);
+
+const Body = ({ children, style = {} }) => (
+  <p
+    style={{
+      fontFamily: 'Inter, sans-serif',
+      fontSize: '15px',
+      color: '#444',
+      lineHeight: 1.85,
+      ...style,
+    }}
+  >
+    {children}
+  </p>
+);
+
+const BulletList = ({ items }) => (
+  <ul style={{ listStyle: 'disc', paddingLeft: '20px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+    {items.map((item, i) => (
+      <li key={i} style={{ fontFamily: 'Inter, sans-serif', fontSize: '14px', color: '#444', lineHeight: 1.75 }}>
+        {item}
+      </li>
+    ))}
+  </ul>
+);
+
+// Placeholder for hero / section images
+const ImgPlaceholder = ({ label = 'Image coming soon', ratio = '16/9' }) => (
+  <div
+    style={{
+      width: '100%',
+      aspectRatio: ratio,
+      background: '#f3f4f6',
+      border: '1px dashed #d1d5db',
+      borderRadius: '8px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: '#9ca3af',
+      fontSize: '12px',
+      fontFamily: 'Inter, sans-serif',
+      letterSpacing: '0.05em',
+    }}
+  >
+    {label}
+  </div>
+);
 
 const DetailProjectPage = ({ products }) => {
   if (!products) return null;
 
+  // Find next project for the "Up Next" section
+  const currentIndex = SITE_CONFIG.projects.findIndex(p => p.id === products.id);
+  const nextProject = SITE_CONFIG.projects[(currentIndex + 1) % SITE_CONFIG.projects.length];
+
   return (
-    // MAIN CONTAINER: White background, Dark text
-    <section className="pt-32 pb-24 px-4 md:px-6 bg-white text-gray-900 min-h-screen">
-      <div className="container mx-auto max-w-4xl">
-        
-        {/* --- SECTION HEADING --- */}
-        <div className="mb-12 text-center">
-          <h2 className="text-5xl md:text-7xl font-['DM_Serif_Display'] font-normal tracking-tighter leading-[0.9] text-gray-900 mb-6 drop-shadow-sm">
-  {products.title}
-</h2>
+    <div
+      style={{
+        background: '#ffffff',
+        minHeight: '100vh',
+        color: '#111',
+        fontFamily: 'Inter, sans-serif',
+      }}
+    >
+      {/* ─── BACK BUTTON ─── */}
+      <div style={{ paddingTop: '100px', paddingLeft: '40px', paddingBottom: '8px' }}>
+        <Link
+          to="/"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '6px',
+            fontFamily: 'Inter, sans-serif',
+            fontSize: '12px',
+            fontWeight: 500,
+            color: '#888',
+            textDecoration: 'none',
+            letterSpacing: '0.04em',
+          }}
+        >
+          <ArrowLeft size={14} />
+          BACK
+        </Link>
+      </div>
+
+      {/* ─── MAIN CONTENT ─── */}
+      <article style={{ maxWidth: '760px', margin: '0 auto', padding: '0 24px 80px' }}>
+
+        {/* ── TITLE ── */}
+        <div style={{ textAlign: 'center', marginBottom: '24px', marginTop: '24px' }}>
+          <h1
+            style={{
+              fontFamily: "'Neuton', 'Georgia', serif",
+              fontSize: 'clamp(32px, 5vw, 56px)',
+              fontWeight: 700,
+              lineHeight: 1.15,
+              color: '#111',
+              letterSpacing: '-0.01em',
+            }}
+          >
+            {products.title}
+          </h1>
         </div>
 
-        {/* --- HERO IMAGE --- */}
-        <div className='w-full flex justify-center my-10'>
-          <div className='relative w-full rounded-3xl overflow-hidden shadow-2xl shadow-gray-200/80 border border-gray-100 bg-gray-50 aspect-video group'>
-            <img 
-              src={products.img}
-              alt={products.title} 
-              className='w-full h-full object-cover transition-transform duration-700 group-hover:scale-105'
-            />
-          </div>
-        </div>
-
-        {/* --- TITLE & TECH STACK --- */}
-        <div className='mt-12 flex flex-col gap-6 text-center md:text-left'>
-          
-          <div className="space-y-2">
-            <span className="text-blue-600 font-bold tracking-widest text-xs uppercase">
-              Web Development
-            </span>
-            <h1 className="text-4xl md:text-6xl font-serif font-black tracking-tight text-gray-900">
-              {products.title}
-            </h1>
-          </div>
-
-          <p className='text-lg md:text-xl font-mono text-gray-600 leading-relaxed max-w-3xl'>
-            {products.description}
+        {/* ── SUBTITLE / TAG LINE ── */}
+        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+          <p
+            style={{
+              fontFamily: "'Courier New', Courier, monospace",
+              fontSize: '11px',
+              fontWeight: 700,
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+              color: '#f59e0b',
+            }}
+          >
+            {products.tags?.join(' · ')}
           </p>
+        </div>
 
-          {/* Tech Stack Tags */}
-          <div className="flex flex-wrap gap-2 md:justify-start justify-center">
-            {products.techstack.map((tech) => (
-              <span key={tech} className="px-4 py-1.5 bg-gray-100 text-gray-700 border border-gray-200 rounded-full text-sm font-semibold">
+        {/* ── HERO IMAGE ── */}
+        <div style={{ marginBottom: '64px' }}>
+          {products.img ? (
+            <img
+              src={products.img}
+              alt={products.title}
+              style={{ width: '100%', borderRadius: '6px', display: 'block' }}
+            />
+          ) : (
+            <ImgPlaceholder label="Hero image — coming soon" ratio="16/9" />
+          )}
+        </div>
+
+        {/* ── BACKGROUND ── */}
+        <section style={{ marginBottom: '56px' }}>
+          <SectionHeading>Background</SectionHeading>
+          <Body>{products.overview || products.description}</Body>
+        </section>
+
+        <hr style={{ border: 'none', borderTop: '1px solid #e5e7eb', marginBottom: '56px' }} />
+
+        {/* ── PROBLEM STATEMENT ── */}
+        <section style={{ marginBottom: '56px' }}>
+          <SectionHeading>Problem Statement</SectionHeading>
+          {products.features?.length > 0 && (
+            <>
+              <Body style={{ marginBottom: '20px' }}>
+                {products.description}
+              </Body>
+              <BulletList items={products.features} />
+            </>
+          )}
+          {/* Section image placeholder */}
+          <div style={{ marginTop: '32px' }}>
+            <ImgPlaceholder label="Section image — coming soon" ratio="21/9" />
+          </div>
+        </section>
+
+        <hr style={{ border: 'none', borderTop: '1px solid #e5e7eb', marginBottom: '56px' }} />
+
+        {/* ── CHALLENGES ── */}
+        {products.challenges?.length > 0 && (
+          <>
+            <section style={{ marginBottom: '56px' }}>
+              <SectionHeading>Challenges</SectionHeading>
+              {/* Two-column label + bullets layout (matching reference screenshot) */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+                {products.challenges.map((challenge, i) => (
+                  <div key={i} style={{ display: 'grid', gridTemplateColumns: '160px 1fr', gap: '24px', alignItems: 'start' }}>
+                    <p
+                      style={{
+                        fontFamily: "'Neuton', serif",
+                        fontSize: '20px',
+                        fontWeight: 600,
+                        color: '#888',
+                        lineHeight: 1.4,
+                        paddingTop: '2px',
+                      }}
+                    >
+                      {i + 1}.&nbsp; {challenge.split('.')[0] || `Point ${i + 1}`}
+                    </p>
+                    <Body>{challenge}</Body>
+                  </div>
+                ))}
+              </div>
+            </section>
+            <hr style={{ border: 'none', borderTop: '1px solid #e5e7eb', marginBottom: '56px' }} />
+          </>
+        )}
+
+        {/* ── TECH STACK ── */}
+        <section style={{ marginBottom: '56px' }}>
+          <SectionHeading>Tech Stack</SectionHeading>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '16px' }}>
+            {products.techstack?.map((tech) => (
+              <span
+                key={tech}
+                style={{
+                  fontFamily: "'Courier New', monospace",
+                  fontSize: '11px',
+                  fontWeight: 700,
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  color: '#444',
+                  background: '#f3f4f6',
+                  border: '1px solid #e5e7eb',
+                  borderRadius: '4px',
+                  padding: '6px 14px',
+                }}
+              >
                 {tech}
               </span>
             ))}
           </div>
+        </section>
 
-          {/* Action Buttons */}
-          <div className="flex gap-4 pt-6 md:justify-start justify-center">
-             <a href={products.liveDemoLink} className="px-8 py-3 bg-gray-900 text-white font-bold rounded-full hover:bg-gray-800 hover:shadow-lg transition-all transform hover:-translate-y-1">
-               Live Demo
-             </a>
-             <a href={products.sourceCodeLink} className="px-8 py-3 bg-white border border-gray-300 text-gray-900 font-bold rounded-full hover:bg-gray-50 transition-colors">
-               Source Code
-             </a>
-          </div>
-        </div>
-
-        {/* --- OVERVIEW, FEATURES, CHALLENGES --- */}
-        <div className='mt-16 max-w-4xl mx-auto'>
-          <h2 className='text-2xl font-bold text-gray-900 border-b border-gray-200 pb-4'>Project Overview</h2>
-          <p className='text-gray-600 mt-6 leading-loose text-lg'>
-            {products.overview}
-          </p>
-
-          <div className='grid md:grid-cols-2 gap-12 mt-12'>
-            {/* Features */}
-            <div className="bg-gray-50 p-8 rounded-2xl border border-gray-100">
-               <h3 className='text-xl font-bold mb-4 flex items-center gap-2'>
-                 <span className="w-2 h-2 rounded-full bg-green-500"></span> Features
-               </h3> 
-               <ul className='space-y-3'>
-                  {products.features.map((feature, index) => (
-                      <li key={index} className="flex items-start gap-3 text-gray-600">
-                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-gray-400 shrink-0"></span>
-                        {feature}
-                      </li>
-                  ))}
-               </ul>
+        {/* ── GALLERY (additional images) ── */}
+        {products.images?.length > 0 && (
+          <section style={{ marginBottom: '56px' }}>
+            <SectionHeading>Gallery</SectionHeading>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+              {products.images.map((src, i) => (
+                <img
+                  key={i}
+                  src={src}
+                  alt={`screenshot-${i + 1}`}
+                  style={{ width: '100%', borderRadius: '6px', border: '1px solid #e5e7eb' }}
+                />
+              ))}
             </div>
+          </section>
+        )}
 
-            {/* Challenges */}
-            <div className="bg-gray-50 p-8 rounded-2xl border border-gray-100">
-               <h3 className='text-xl font-bold mb-4 flex items-center gap-2'>
-                 <span className="w-2 h-2 rounded-full bg-red-500"></span> Challenges
-               </h3>
-               <ul className='space-y-3'>
-                  {products.challenges.map((challenge, index) => (
-                      <li key={index} className="flex items-start gap-3 text-gray-600">
-                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-gray-400 shrink-0"></span>
-                        {challenge}
-                      </li>
-                  ))}
-               </ul>
-            </div>     
+        {/* ── ACTION BUTTONS ── */}
+        <div style={{ display: 'flex', gap: '16px', marginBottom: '80px', flexWrap: 'wrap' }}>
+          {products.liveDemoLink && (
+            <a
+              href={products.liveDemoLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                padding: '12px 32px',
+                background: '#111',
+                color: '#fff',
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '13px',
+                fontWeight: 600,
+                textDecoration: 'none',
+                borderRadius: '6px',
+                display: 'inline-block',
+              }}
+            >
+              Live Demo
+            </a>
+          )}
+          {products.sourceCodeLink && (
+            <a
+              href={products.sourceCodeLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                padding: '12px 32px',
+                background: 'transparent',
+                color: '#111',
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '13px',
+                fontWeight: 600,
+                textDecoration: 'none',
+                borderRadius: '6px',
+                border: '1px solid #d1d5db',
+                display: 'inline-block',
+              }}
+            >
+              Source Code
+            </a>
+          )}
+        </div>
+
+        {/* ── UP NEXT ── */}
+        {nextProject && (
+          <div style={{ borderTop: '1px solid #e5e7eb', paddingTop: '48px' }}>
+            <p
+              style={{
+                fontFamily: "'Courier New', monospace",
+                fontSize: '10px',
+                fontWeight: 700,
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                color: '#aaa',
+                marginBottom: '16px',
+              }}
+            >
+              Up Next
+            </p>
+            <Link
+              to={`/project/${nextProject.id}`}
+              style={{ textDecoration: 'none' }}
+            >
+              <h3
+                style={{
+                  fontFamily: "'Neuton', serif",
+                  fontSize: '32px',
+                  fontWeight: 700,
+                  color: '#111',
+                  lineHeight: 1.2,
+                  transition: 'color 0.2s ease',
+                }}
+                onMouseEnter={e => (e.target.style.color = '#f59e0b')}
+                onMouseLeave={e => (e.target.style.color = '#111')}
+              >
+                {nextProject.title} →
+              </h3>
+            </Link>
           </div>
-        </div>
+        )}
+      </article>
+    </div>
+  );
+};
 
-        {/* --- GALLERY / HIGHLIGHTS SECTION --- */}
-        <div className='mt-32'>
-          <div className='flex flex-col gap-20'>
-            
-            {/* Section Title */}
-            <div className="text-center mb-4">
-              <span className="text-xs font-extrabold tracking-[0.2em] text-gray-400 uppercase mb-3 block">Highlights</span>
-              <h3 className="text-3xl font-bold text-gray-900 tracking-tight">Major Milestones</h3>
-            </div>
-
-            {products.images?.map((imgSrc, index) => (
-              /* CARD CONTAINER: Light Gray background for contrast against white page */
-              <div key={index} className='bg-gray-50 border border-gray-200 rounded-3xl p-6 md:p-12 shadow-sm'>
-                
-                {/* Header within Card */}
-                <div className="flex flex-col items-center text-center mb-8">
-                  <div className="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center mb-4 text-yellow-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900">Key Feature Showcase</h3>
-                </div>
-
-                {/* BROWSER WINDOW (Light Mode Style) */}
-                <div className='rounded-xl overflow-hidden border border-gray-200 shadow-xl shadow-gray-200 bg-white'>
-                    {/* Browser Header Bar */}
-                    <div className="bg-gray-100 px-4 py-3 flex items-center gap-4 border-b border-gray-200">
-                      <div className="flex gap-1.5">
-                        <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                        <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                        <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                      </div>
-                      {/* Address Bar */}
-                      <div className="flex-1 flex justify-center">
-                        <div className="bg-white border border-gray-200 rounded-md px-4 py-1.5 text-xs text-gray-400 font-mono flex items-center gap-2 w-full max-w-md justify-center shadow-sm">
-                          storyspire.vercel.app
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* The Image */}
-                    <div className="relative">
-                      <img
-                        src={imgSrc}
-                        alt={`Screenshot ${index + 1}`}
-                        className='w-full h-auto object-cover'
-                      />
-                    </div>
-                </div>
-                
-                <div className="mt-6 flex justify-end">
-                    <span className="text-[10px] text-gray-400 uppercase tracking-wider font-bold">
-                        0.{index + 1} Visualization
-                    </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* --- NEXT PROJECT SECTION --- */}
-        <div className="mt-16">
-        {(() => {
-          const currentIndex = SITE_CONFIG.projects.findIndex(p => p.id === products.id);
-          const nextProject = SITE_CONFIG.projects[(currentIndex + 1) % SITE_CONFIG.projects.length];
-
-          if (!nextProject) return null;
-
-          return (
-            <div className="max-w-5xl mx-auto">
-              <h2 className="text-xl font-bold text-gray-400 mb-6 uppercase tracking-wider">Up Next</h2>
-
-              <a href={`/project/${nextProject.id}`} className="block group">
-                {/* Card: White background, subtle border, hover lift */}
-                <div className="bg-white border border-gray-200 rounded-3xl p-8 md:p-12 transition-all duration-300 hover:border-blue-200 hover:shadow-2xl hover:shadow-blue-100 hover:-translate-y-1">
-                  
-                  <div className="flex flex-col md:flex-row justify-between items-start mb-8 gap-6">
-                    <div className="max-w-2xl">
-                      <h3 className="text-3xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
-                        {nextProject.title}
-                      </h3>
-                      <p className="text-gray-500 leading-relaxed text-sm md:text-base line-clamp-2">
-                        {nextProject.description}
-                      </p>
-                    </div>
-
-                    <div className="p-4 rounded-full bg-gray-50 border border-gray-200 text-gray-900 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                      </svg>
-                    </div>
-                  </div>
-
-                  {/* Browser Preview (Small) */}
-                  <div className="rounded-xl overflow-hidden border border-gray-200 shadow-md bg-white relative">
-                      <div className="bg-gray-100 px-4 py-2 flex items-center gap-2 border-b border-gray-200">
-                         <div className="flex gap-1">
-                            <div className="w-2 h-2 rounded-full bg-gray-300"></div>
-                            <div className="w-2 h-2 rounded-full bg-gray-300"></div>
-                            <div className="w-2 h-2 rounded-full bg-gray-300"></div>
-                         </div>
-                      </div>
-                      <div className="relative aspect-[21/9]">
-                         <img 
-                           src={nextProject.image} 
-                           alt={nextProject.title} 
-                           className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
-                         />
-                      </div>
-                  </div>
-
-                </div>
-              </a>
-            </div>
-          );
-        })()}
-        </div>
-
-      </div>
-    </section>
-  )
-}
-
-export default DetailProjectPage
+export default DetailProjectPage;

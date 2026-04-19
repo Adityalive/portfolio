@@ -10,7 +10,34 @@ export const SITE_CONFIG = {
     github: "https://github.com/Adityalive",
     linkedin: "https://linkedin.com/in/your-id",
     twitter: "https://twitter.com",
+    x: "https://x.com",
+    youtube: "https://youtube.com",
+    instagram: "https://instagram.com",
+    mail: "mailto:hi@aditya.in"
   },
+  experience: [
+    {
+      company: "good day",
+      role: "SDE-L1 (Full Stack)",
+      date: "January 2026 – Present",
+      location: "Hyderabad, India (On-Site)",
+      isCurrent: true
+    },
+    {
+      company: "Promote",
+      role: "Founding Frontend Engineer",
+      date: "August 2025 – December 2025",
+      location: "United States (Remote)",
+      isCurrent: false
+    },
+    {
+      company: "Upsurge Labs",
+      role: "Backend Developer Intern",
+      date: "June 2025 – July 2025",
+      location: "Bangalore, India (On-Site)",
+      isCurrent: false
+    }
+  ],
   projects: [
     {
       id: "project-1", // This ID must match ProductsDetails below
@@ -18,11 +45,11 @@ export const SITE_CONFIG = {
       description: `A MERN stack platform leveraging Generative AI to automate code reviews. It provides real-time static analysis, detects security vulnerabilities, and offers intelligent refactoring suggestions to optimize performance`,
       tags: ["React", "Node.js", "AI API"],
       image: "https://images.unsplash.com/photo-1766155072349-aa536dbd6ad1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxOXx8fGVufDB8fHx8fA%3D%3D",
-      link: "#",
+      link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     },
     {
       id: "project-2", // This ID must match ProductsDetails below
-      title: "Tiny Cats",
+      title: "FOOD TRACKER",
       description: "A Computer Vision system developed using Deep Learning (CNNs) to accurately detect and classify food items in real-time. It leverages advanced object detection algorithms to analyze image data for automated dietary tracking and nutritional estimation.",
       tags: ["MERN", "OpenAI"],
       image: "https://plus.unsplash.com/premium_vector-1734707879403-19be24212849?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",

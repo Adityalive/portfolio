@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
+import { Sun, Moon } from "lucide-react";
 
 export default function ThemeToggle() {
-  const [darkMode, setDarkMode] = useState(() =>
-    localStorage.getItem("theme") === "dark"
-  );
+  const [darkMode, setDarkMode] = useState(() => {
+    const saved = localStorage.getItem("theme");
+    // Default to dark if not set, to match the target design
+    return saved ? saved === "dark" : true;
+  });
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -19,9 +22,10 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={() => setDarkMode(!darkMode)}
-      className="text-sm px-3 py-1 rounded border border-border hover:bg-muted transition"
+      className="p-2 rounded-full hover:bg-secondary/50 transition-all text-muted-foreground hover:text-foreground"
+      aria-label="Toggle Theme"
     >
-      {darkMode ? "☀️ Light" : "🌙 Dark"}
+      {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
     </button>
   );
 }

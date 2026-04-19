@@ -25,11 +25,11 @@ export const ProductsDetails = [
   },
   {
     id: "project-2", // MATCHED with SITE_CONFIG
-    title: "Tiny Cats", // FIXED (Changed from 'Product One' to match)
+    title: "FOOD TRACKER", // FIXED (Changed from 'Product One' to match)
     description: "A Computer Vision system developed using Deep Learning (CNNs).",
     techstack: ["Python", "TensorFlow", "OpenCV"],
     img: "https://plus.unsplash.com/premium_vector-1734707879403-19be24212849?q=80&w=880&auto=format&fit=crop",
-    liveDemoLink: "#",
+    liveDemoLink: "https://food-tracker-rm1gf4ml7-adityakumar4176o-5502s-projects.vercel.app",
     sourceCodeLink: "https://github.com/example/tiny-cats",
     overview: "Tiny Cats uses CNNs to identify food items from images for dietary tracking applications.",
     features: [

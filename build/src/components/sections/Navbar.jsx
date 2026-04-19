@@ -1,67 +1,57 @@
 import { useState, useEffect } from "react";
-import pic from "../../images/ChatGPT Image Dec 19, 2025, 04_44_34 PM (1).png";
 import ThemeToogle from "../ui/ThemeToogle";
+import { Search } from "lucide-react";
 
 const links = [
-  { name: "Blogs", href: "#blogs" },
-  { name: "Projects", href: "#projects" },
-  { name: "About", href: "#about" },
+  { name: "Home", href: "/" },
+  { name: "Work", href: "#projects" },
+  { name: "Blog", href: "#blogs" },
+  { name: "Resume", href: "#resume" },
 ];
 
 export default function Navbar() {
-  const [mobileOpen, setMobileOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // 1. Detect scroll position
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 20);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <header
-      // 2. Conditional Styling
-      // - transition-all duration-300: Makes the change smooth
-      // - backdrop-blur-md: The actual blur effect
-      // - bg-white/70: 70% opacity white (blur requires transparency to work)
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/70 backdrop-blur-md shadow-md py-3"
-          : "bg-white/0 shadow-none py-5" 
+      className={`fixed top-0 w-full z-50 transition-all duration-300 font-inter ${
+        isScrolled ? "bg-background/80 backdrop-blur-md py-4" : "bg-transparent py-6"
       }`}
     >
-      <div className="max-w-5xl mx-auto px-6 flex justify-between items-center">
-        {/* Logo */}
-        <a
-          href="/"
-          className="text-xl font-bold max-h-18 max-w-14 overflow-hidden rounded-md"
-        >
-          <img src={pic} alt="Logo" />
-          <span className="text-gray-500"></span>
-        </a>
-
-        {/* Desktop Links */}
-        <nav className="hidden md:flex gap-8 text-sm font-medium text-gray-800">
+      <div className="max-w-3xl mx-auto px-6 flex justify-between items-center">
+        {/* Left: Navigation Links */}
+        <nav className="flex gap-6 items-center text-sm font-medium text-muted-foreground">
           {links.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="font-semibold transition-colors hover:text-black hover:underline underline-offset-4"
+              className="transition-colors hover:text-foreground"
             >
               {link.name}
             </a>
           ))}
         </nav>
-        <ThemeToogle />
+
+        {/* Right: Search and Theme Toggle */}
+        <div className="flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-secondary/50 rounded-lg text-muted-foreground text-xs border border-border cursor-pointer hover:border-foreground/20 transition-colors">
+            <Search className="w-3 h-3" />
+            <div className="flex items-center gap-1.5">
+              <span>Search</span>
+              <kbd className="font-sans text-[10px] opacity-60">Ctrl K</kbd>
+            </div>
+          </div>
+          <ThemeToogle />
+        </div>
       </div>
     </header>
   );
-}
+}

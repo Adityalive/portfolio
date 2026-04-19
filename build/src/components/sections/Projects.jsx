@@ -1,71 +1,190 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { SITE_CONFIG } from '../../data/config';
-import Card from '../ui/Card';
+
+// Each project gets a distinct card color palette
+const CARD_THEMES = [
+  {
+    bg: '#ffffff',
+    categoryColor: '#6b6b6b',
+    titleColor: '#2563eb', // blue
+    subtitleColor: '#2563eb',
+    border: '#e5e7eb',
+  },
+  {
+    bg: '#f0fdf4',
+    categoryColor: '#4b7c5c',
+    titleColor: '#15803d', // green
+    subtitleColor: '#15803d',
+    border: '#bbf7d0',
+  },
+  {
+    bg: '#fff7ed',
+    categoryColor: '#7c5a1e',
+    titleColor: '#d97706', // amber
+    subtitleColor: '#d97706',
+    border: '#fde68a',
+  },
+  {
+    bg: '#fef2f2',
+    categoryColor: '#7f1d1d',
+    titleColor: '#dc2626', // red
+    subtitleColor: '#dc2626',
+    border: '#fecaca',
+  },
+];
+
+// Placeholder image that fills the correct aspect ratio
+const PlaceholderImg = ({ color }) => (
+  <div
+    style={{
+      width: '100%',
+      aspectRatio: '16/9',
+      background: `${color}22`,
+      border: `1px solid ${color}44`,
+      borderRadius: '6px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}
+  >
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke={`${color}88`} strokeWidth="1.2">
+      <rect x="3" y="3" width="18" height="18" rx="2" />
+      <circle cx="8.5" cy="8.5" r="1.5" />
+      <path d="M21 15l-5-5L5 21" />
+    </svg>
+  </div>
+);
 
 export const Projects = () => {
   return (
-    <section id="projects" className="py-32 px-6 md:px-12 min-h-screen bg-white text-gray-900">
-      <div className="max-w-[1400px] mx-auto w-full">
-        
-        {/* --- HEADER: Left aligned, bold, minimal --- */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8 border-b border-gray-100 pb-12">
-          
-          <div className="max-w-2xl">
-            {/* Small Tech Label */}
-            <div className="flex items-center gap-3 mb-6">
-               <div className="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></div>
-               <span className="text-xl font-mono font-medium text-gray-500 uppercase tracking-widest">
-                 Selected Projects (0{SITE_CONFIG.projects.length})
-               </span>
-            </div>       
-           
-      </div>
+    <section
+      id="projects"
+      className="py-20 px-6 md:px-12 bg-background font-inter"
+    >
+      <div className="max-w-3xl mx-auto">
+
+        {/* ─── SECTION LABEL ─── */}
+        <div className="flex items-center gap-3 mb-4">
+          <span className="text-base font-bold tracking-widest uppercase text-foreground/80">WORK</span>
+          <div className="w-6 h-6 rounded-full bg-secondary/60 border border-border/50" />
         </div>
 
-        {/* --- GRID: Clean, spacious, tech-focused --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20">
-          
-          {SITE_CONFIG.projects.map((project, index) => (
-            <Link 
-              to={`/project/${project.id}`} 
-              key={project.id} 
-              className="group block"
-            >
-              {/* Card Container - No tilt, just clean zoom */}
-              <div className="relative overflow-hidden rounded-md bg-gray-50">
-                 <div className="transition-transform duration-700 ease-out group-hover:scale-[1.02]">
-                    <Card project={project} index={index} />
-                 </div>
-              </div>
+        {/* ─── SUBTITLE ─── */}
+        <p className="text-sm text-muted-foreground mb-14 max-w-md">
+          Below are some select projects from the world of design and technology.
+        </p>
 
-              {/* Minimal Tech Info Below Card */}
-              <div className="mt-8 flex justify-between items-start">
-                 <div>
-                    <h3 className="text-3xl font-bold tracking-tight text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
-                      {project.title}
-                    </h3>
-                    <div className="flex gap-2 text-sm text-gray-500 font-medium">
-                       {/* Display first 2 tags only for cleaner look */}
-                       {project.tags?.slice(0, 2).map(tag => (
-                          <span key={tag} className="bg-gray-100 px-3 py-1 rounded-full text-xs uppercase tracking-wide">
-                            {tag}
-                          </span>
-                       ))}
+        {/* ─── CARD GRID ─── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {SITE_CONFIG.projects.map((project, index) => {
+            const theme = CARD_THEMES[index % CARD_THEMES.length];
+            const tag = project.tags?.[0] ?? 'FULL STACK';
+            return (
+              <Link
+                key={project.id}
+                to={`/project/${project.id}`}
+                className="group block rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+                style={{
+                  background: theme.bg,
+                  border: `1px solid ${theme.border}`,
+                }}
+              >
+                {/* Card inner padding */}
+                <div className="p-6 flex flex-col gap-4">
+
+                  {/* Category tag & Live Button */}
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      {/* little pie icon */}
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <circle cx="7" cy="7" r="6" stroke={theme.categoryColor} strokeWidth="1.2" />
+                        <path d="M7 7 L7 1 A6 6 0 0 1 13 7 Z" fill={theme.categoryColor} opacity="0.5" />
+                      </svg>
+                      <span
+                        style={{
+                          fontFamily: "'Courier New', monospace",
+                          fontSize: '10px',
+                          fontWeight: 700,
+                          letterSpacing: '0.2em',
+                          textTransform: 'uppercase',
+                          color: theme.categoryColor,
+                        }}
+                      >
+                        {tag}
+                      </span>
                     </div>
-                 </div>
 
-                 {/* Arrow Icon that appears on hover */}
-                 <div className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                    </svg>
-                 </div>
-              </div>
-            </Link>
-          ))}
+                    {/* LIVE BUTTON */}
+                    {project.link && (
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          window.open(project.link, '_blank');
+                        }}
+                        className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-foreground/5 hover:bg-foreground/10 transition-colors text-[9px] font-bold tracking-widest text-muted-foreground uppercase border border-border/50"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                        Live
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Project title — big pixel/retro look */}
+                  <h3
+                    style={{
+                      fontFamily: "'Neuton', serif",
+                      fontSize: 'clamp(24px, 3.5vw, 34px)',
+                      fontWeight: 700,
+                      lineHeight: 1.15,
+                      color: theme.titleColor,
+                      letterSpacing: '-0.01em',
+                    }}
+                  >
+                    {project.title}
+                  </h3>
+
+                  {/* Short subtitle / tags line */}
+                  <p
+                    style={{
+                      fontFamily: "'Courier New', monospace",
+                      fontSize: '10px',
+                      fontWeight: 700,
+                      letterSpacing: '0.15em',
+                      textTransform: 'uppercase',
+                      color: theme.subtitleColor,
+                    }}
+                  >
+                    {project.tags?.join(' · ')}
+                  </p>
+
+                  {/* Thumbnail placeholder (user will swap in their own images later) */}
+                  <div className="mt-2">
+                    {project.image ? (
+                      <div
+                        style={{
+                          width: '100%',
+                          aspectRatio: '16/9',
+                          borderRadius: '6px',
+                          overflow: 'hidden',
+                        }}
+                      >
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        />
+                      </div>
+                    ) : (
+                      <PlaceholderImg color={theme.titleColor} />
+                    )}
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
         </div>
-
       </div>
     </section>
   );

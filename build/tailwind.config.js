@@ -8,10 +8,10 @@ export default {
   theme: {
     extend: {
       fontFamily:{
+         inter: ['"Inter"', 'sans-serif'],
          dm: ['"DM Sans"', 'sans-serif'],
-        neuton: ['"Neuton"', 'serif'],
-        rubik: ['"Rubik"', 'sans-serif'],
-
+         neuton: ['"Neuton"', 'serif'],
+         rubik: ['"Rubik"', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
