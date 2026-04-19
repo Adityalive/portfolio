@@ -19,7 +19,7 @@ export const SITE_CONFIG = {
     youtube: "https://youtube.com",
     instagram: "https://instagram.com",
     mail: "mailto:adityakumar4176o@gmail.com",
-    resume: "https://drive.google.com/file/d/1Fo2NV78_IatMhHwRaUuolpM9_klIJcC2/view?usp=drive_link"
+    resume: "https://drive.google.com/file/d/1g06lLEFCk0eAr24cLmAhHpm_8zf2uGpU/view?usp=sharing"
   },
 
   experience: [

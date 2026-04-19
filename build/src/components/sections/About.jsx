@@ -38,7 +38,7 @@ const About = () => {
 
           {/* CTA: View Resume */}
           <a 
-            href="https://drive.google.com/file/d/1Fo2NV78_IatMhHwRaUuolpM9_klIJcC2/view?usp=drive_link" 
+            href="https://drive.google.com/file/d/1g06lLEFCk0eAr24cLmAhHpm_8zf2uGpU/view?usp=sharing" 
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center gap-2.5 px-6 py-3 rounded-full text-sm font-bold text-black transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"

@@ -7,10 +7,10 @@ const links = [
   { name: "Home", href: "/" },
   { name: "Work", href: "#projects" },
   { name: "Blog", href: "#blogs" },
-  { name: "Resume", href: "https://drive.google.com/file/d/1Fo2NV78_IatMhHwRaUuolpM9_klIJcC2/view?usp=drive_link" },
+  { name: "Resume", href: "https://drive.google.com/file/d/1g06lLEFCk0eAr24cLmAhHpm_8zf2uGpU/view?usp=sharing" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ onSearchClick }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [hoveredLink, setHoveredLink] = useState(null);
 
@@ -62,6 +62,7 @@ export default function Navbar() {
           <motion.div 
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
+            onClick={onSearchClick}
             className="hidden md:flex items-center gap-3 px-4 py-2 bg-white/5 rounded-full text-muted-foreground text-xs border border-white/5 cursor-pointer hover:border-white/10 hover:bg-white/10 transition-all"
           >
             <Search className="w-3.5 h-3.5" />

@@ -13,9 +13,11 @@ import Navbar from './components/sections/Navbar';
 import Detailroute from './components/sections/Projects2/Detailroute';
 import Footer from './components/sections/Footer';
 import Preloader from './components/ui/Preloader';
+import SearchPalette from './components/ui/SearchPalette';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   useEffect(() => {
     // 1. Hide the native black screen instantly once React mounts
@@ -43,14 +45,27 @@ const App = () => {
     }
   }, []);
 
+  // Keyboard shortcut for Search Palette (Ctrl+K or Cmd+K)
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        setIsSearchOpen(prev => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background font-inter">
       <AnimatePresence mode="wait">
         {loading && <Preloader key="lottie-loader" />}
       </AnimatePresence>
 
-      <Navbar />
+      <Navbar onSearchClick={() => setIsSearchOpen(true)} />
       <CursorCat />
+      <SearchPalette isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
 
       <Routes>
         <Route
