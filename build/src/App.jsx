@@ -1,94 +1,77 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
-
-import { Hero } from './components/sections/Hero';
-import Story from './components/sections/Story';
-import { Projects } from './components/sections/Projects';
-import About from './components/sections/About';
-import Quote from './components/sections/Quote';
-import Contact from './components/sections/Contact';
-import CursorCat from './components/ui/CursorCat';
-import Navbar from './components/sections/Navbar';
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
+import Home from './Pages/Home';
+import About from './Pages/About';
+import Components from './Pages/Components';
 import Detailroute from './components/sections/Projects2/Detailroute';
-import Footer from './components/sections/Footer';
-import Preloader from './components/ui/Preloader';
 import SearchPalette from './components/ui/SearchPalette';
+import CursorCat from './components/ui/CursorCat';
+import './index.css';
+import './App.css';
 
-const App = () => {
-  const [loading, setLoading] = useState(true);
+export default function App() {
+  const [theme, setTheme] = useState(() => {
+    const saved = localStorage.getItem('theme');
+    return saved || 'dark';
+  });
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   useEffect(() => {
-    // 1. Hide the native black screen instantly once React mounts
-    const nativeLoader = document.getElementById('global-loader');
-    if (nativeLoader) {
-      nativeLoader.classList.add('fade-out');
-      setTimeout(() => nativeLoader.remove(), 500);
-    }
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
-    // 2. Logic for the Lottie Preloader
-    const handleLoad = () => {
-      // Small artificial delay to appreciate the animation if it's too fast
-      setTimeout(() => setLoading(false), 2400); 
-    };
+  useEffect(() => {
+    const loader = document.getElementById('global-loader');
+    if (!loader) return;
 
-    if (document.readyState === 'complete') {
-      handleLoad();
-    } else {
-      window.addEventListener('load', handleLoad);
-      const safetyTimer = setTimeout(handleLoad, 4000); // 4s max safety
-      return () => {
-        window.removeEventListener('load', handleLoad);
-        clearTimeout(safetyTimer);
-      };
-    }
+    loader.classList.add('fade-out');
+    const timer = window.setTimeout(() => {
+      loader.remove();
+    }, 500);
+
+    return () => window.clearTimeout(timer);
   }, []);
 
-  // Keyboard shortcut for Search Palette (Ctrl+K or Cmd+K)
   useEffect(() => {
     const handleKeyDown = (e) => {
+      // Toggle search palette on Ctrl+K or Cmd+K
       if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
         e.preventDefault();
-        setIsSearchOpen(prev => !prev);
+        setIsSearchOpen((prev) => !prev);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  const toggleTheme = () => {
+    const next = theme === 'dark' ? 'light' : 'dark';
+    setTheme(next);
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  };
+
   return (
-    <div className="min-h-screen bg-background font-inter">
-      <AnimatePresence mode="wait">
-        {loading && <Preloader key="lottie-loader" />}
-      </AnimatePresence>
-
-      <Navbar onSearchClick={() => setIsSearchOpen(true)} />
-      <CursorCat />
-      <SearchPalette isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
-
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Hero />
-              <Story />
-              <div id="projects">
-                <Projects />
-              </div>
-              <Quote />
-              <About />
-              <Contact />
-            </>
-          }
-        />
-        <Route path="/project/:id" element={<Detailroute />} />
-      </Routes>
-
+    <div className="app">
+      <Header 
+        theme={theme} 
+        onToggleTheme={toggleTheme} 
+        onSearchClick={() => setIsSearchOpen(true)} 
+      />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/components" element={<Components />} />
+          <Route path="/project/:id" element={<Detailroute />} />
+        </Routes>
+      </main>
       <Footer />
+      <SearchPalette isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+      <CursorCat />
     </div>
   );
-};
-
-export default App;
+}

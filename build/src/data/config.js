@@ -7,9 +7,13 @@ import holosai2 from "../images/Holosai2.png";
 import moodifyImg from "../images/moodify.png";
 
 export const SITE_CONFIG = {
-  name: "Aditya",
-  role: "CSE Student & Full Stack Developer",
-  description: `I'm a Full Stack Web Developer focused on building real-world, production-ready systems. I specialize in AI-powered applications, scalable backend architectures, and rapid MVP development. I care about solving meaningful problems, shipping fast, and continuously improving based on real usage.`,
+  name: "Aditya Kumar",
+  role: "Full-Stack AI Engineer",
+  description: `I'm a Full-Stack AI Engineer focused on building intelligent, production-ready systems. I specialize in developing multi-agent architectures, integrating large language models (LLMs), and designing scalable backend systems. I care about solving complex problems, shipping fast, and continuously improving intelligent systems based on real-world usage. Currently working with TypeScript, React, Next.js, Tailwind CSS, Node.js, and LangChain.`,
+  profile: {
+    location: "Odisha, India",
+    pronouns: "he/him",
+  },
 
   socials: {
     github: "https://github.com/Adityalive",
@@ -19,30 +23,23 @@ export const SITE_CONFIG = {
     youtube: "https://youtube.com",
     instagram: "https://instagram.com",
     mail: "mailto:adityakumar4176o@gmail.com",
-    resume: "https://drive.google.com/file/d/1g06lLEFCk0eAr24cLmAhHpm_8zf2uGpU/view?usp=sharing"
+    resume: "https://drive.google.com/file/d/1PcN3xYof6KFZ-GC2gLNDWjX0yTmaAGoF/view?usp=drive_link"
   },
 
   experience: [
     {
-      company: "good day",
-      role: "SDE-L1 (Full Stack)",
-      date: "January 2026 – Present",
-      location: "Hyderabad, India (On-Site)",
-      isCurrent: true
-    },
-    {
-      company: "Promote",
-      role: "Founding Frontend Engineer",
-      date: "August 2025 – December 2025",
-      location: "United States (Remote)",
-      isCurrent: false
-    },
-    {
-      company: "Upsurge Labs",
-      role: "Backend Developer Intern",
-      date: "June 2025 – July 2025",
-      location: "Bangalore, India (On-Site)",
-      isCurrent: false
+      company: "CodSoft",
+      role: "Web Development Intern",
+      date: "May 2026 – June 2026",
+      location: "Virtual Internship",
+      isCurrent: true,
+      description: "Developed and deployed responsive web applications using React and Node.js.",
+      bullets: [
+        "Built and integrated RESTful APIs with proper validation, error handling, and authentication middleware",
+        "Implemented reusable component architecture in React, reducing code duplication",
+        "Delivered tasks within timelines using Git-based workflows and iterative development practices"
+      ],
+      tags: ["React", "Node.js", "REST APIs", "Git", "JavaScript"]
     }
   ],
 
