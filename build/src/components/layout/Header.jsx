@@ -48,6 +48,12 @@ export default function Header({ theme, onToggleTheme, onSearchClick }) {
           >
             Blog
           </a>
+          <NavLink
+            to="/games"
+            className={({ isActive }) => `header__link${isActive ? ' header__link--active' : ''}`}
+          >
+            Games
+          </NavLink>
           <a
             href={SITE_CONFIG.socials.resume}
             target="_blank"

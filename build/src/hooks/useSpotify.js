@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import useLocalStorage from './useLocalStorage';
 
 const CLIENT_ID = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
 const CLIENT_SECRET = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET;
@@ -8,12 +9,12 @@ const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
 
 export const useSpotify = () => {
-  const [nowPlaying, setNowPlaying] = useState({
+  const [nowPlaying, setNowPlaying] = useLocalStorage('spotify-now-playing', {
     isPlaying: false,
-    title: "",
-    artist: "",
-    albumImageUrl: "",
-    songUrl: ""
+    title: '',
+    artist: '',
+    albumImageUrl: '',
+    songUrl: ''
   });
 
   const getAccessToken = async () => {

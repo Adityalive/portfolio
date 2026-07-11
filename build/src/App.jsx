@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import Home from './Pages/Home';
 import About from './Pages/About';
 import Components from './Pages/Components';
+import Games from './Pages/Games';
 import Detailroute from './components/sections/Projects2/Detailroute';
 import SearchPalette from './components/ui/SearchPalette';
 import CursorCat from './components/ui/CursorCat';
@@ -12,6 +13,7 @@ import './index.css';
 import './App.css';
 
 export default function App() {
+  const location = useLocation();
   const [theme, setTheme] = useState(() => {
     const saved = localStorage.getItem('theme');
     return saved || 'dark';
@@ -66,12 +68,13 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/components" element={<Components />} />
+          <Route path="/games" element={<Games />} />
           <Route path="/project/:id" element={<Detailroute />} />
         </Routes>
       </main>
       <Footer />
       <SearchPalette isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
-      <CursorCat />
+      {location.pathname !== '/games' && <CursorCat />}
     </div>
   );
 }
