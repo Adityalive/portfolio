@@ -1,8 +1,8 @@
 // src/data/config.js
 
 import { Quote } from "lucide-react";
-import supportaiImg from "../images/supportai.jpg";
-import xautoImg from "../images/xauto.jpg";
+import supportaiImg from "../images/supportai.png";
+import xautoImg from "../images/xauto.png";
 import smartSaverImg from "../images/smart-saver.png";
 import holosai1 from "../images/Holosai1.png";
 import holosai2 from "../images/Holosai2.png";

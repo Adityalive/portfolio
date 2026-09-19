@@ -112,11 +112,11 @@ export const Projects = () => {
                 </div>
 
                 {/* ─── RIGHT: IMAGE ─── */}
-                <div className="relative h-full overflow-hidden bg-gray-50" style={{ transform: "translateZ(10px)" }}>
+                <div className="relative h-full overflow-hidden bg-black/40 flex items-center justify-center p-2" style={{ transform: "translateZ(10px)" }}>
                   <img
                     src={project.image || 'https://via.placeholder.com/800x600'}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-contain object-center transition-transform duration-700 group-hover:scale-105"
                   />
                   {/* Glass Shimmer */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-tr from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
