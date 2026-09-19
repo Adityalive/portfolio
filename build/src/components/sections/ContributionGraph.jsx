@@ -1,5 +1,4 @@
-import { useEffect, useRef } from 'react';
-import useLocalStorage from '../../hooks/useLocalStorage';
+import { useEffect, useRef, useState } from 'react';
 import './ContributionGraph.css';
 
 // Months to display as column labels (53 weeks)
@@ -19,9 +18,8 @@ const GITHUB_USERNAME = 'Adityalive';
 
 export default function ContributionGraph() {
   const ref = useRef(null);
-  const [cached, setCached] = useLocalStorage('gh-contributions', { weeks: [], total: 0 });
-  const weeks = cached.weeks.length ? cached.weeks : Array.from({ length: 53 }, () => Array(7).fill(0));
-  const total = cached.total;
+  const [weeks, setWeeks] = useState(() => Array.from({ length: 53 }, () => Array(7).fill(0)));
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     async function fetchContributions() {
@@ -37,7 +35,8 @@ export default function ContributionGraph() {
             return LEVEL_MAP[day.contributionLevel] || 0;
           })
         );
-        setCached({ weeks: parsedWeeks, total: totalCount });
+        setWeeks(parsedWeeks);
+        setTotal(totalCount);
       } catch (err) {
         console.error('Error fetching GitHub contributions:', err);
       }

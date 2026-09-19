@@ -1,6 +1,8 @@
 // src/data/config.js
 
 import { Quote } from "lucide-react";
+import supportaiImg from "../images/supportai.jpg";
+import xautoImg from "../images/xauto.jpg";
 import smartSaverImg from "../images/smart-saver.png";
 import holosai1 from "../images/Holosai1.png";
 import holosai2 from "../images/Holosai2.png";
@@ -44,6 +46,24 @@ export const SITE_CONFIG = {
   ],
 
   projects: [
+    {
+      id: "project-supportai",
+      title: "SupportAI – Multi-Tenant AI Customer Support Platform",
+      description: `Architected a multi-tenant AI support platform with chat, voice, knowledge base, ticket management, and analytics. Features a RAG pipeline routing queries through Google Gemini 2.0 + Groq LLaMA 3.1, Groq Whisper v3 for speech-to-text, Twilio integration, and an embeddable widget.`,
+      tags: ["React", "Express", "MongoDB Atlas", "Gemini 2.0", "Groq", "Whisper v3"],
+      image: supportaiImg,
+      link: "#"
+    },
+
+    {
+      id: "project-xauto",
+      title: "X-Auto – Autonomous AI Content Engine",
+      description: `A fully autonomous dual-LLM pipeline (Mistral AI + Gemini 2.5) that scrapes trending tech news, scores virality, and drafts high-converting X (Twitter) posts 24/7. Integrates Firecrawl scraping, Telegram Bot command center, and a click-to-tweet system bypassing paid APIs.`,
+      tags: ["Mistral AI", "Gemini 2.5", "Firecrawl", "Telegram API", "Node.js"],
+      image: xautoImg,
+      link: "#"
+    },
+
     {
       id: "project-1",
       title: "HolosAI – Deep Research Pipeline",
