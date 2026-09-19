@@ -33,15 +33,15 @@ export const SITE_CONFIG = {
       company: "CodSoft",
       role: "Web Development Intern",
       date: "May 2026 – June 2026",
-      location: "Virtual Internship",
+      location: "Remote Internship",
       isCurrent: true,
-      description: "Developed and deployed responsive web applications using React and Node.js.",
+      description: "Built a doctor appointment booking platform using the MERN stack (MongoDB, Express, React, Node.js).",
       bullets: [
-        "Built and integrated RESTful APIs with proper validation, error handling, and authentication middleware",
-        "Implemented reusable component architecture in React, reducing code duplication",
-        "Delivered tasks within timelines using Git-based workflows and iterative development practices"
+        "Built a doctor appointment booking platform using the MERN stack (MongoDB, Express, React, Node.js) — patients discover nearby verified doctors via location-based filtering and book appointments directly",
+        "Developed the doctor-side dashboard with appointment acceptance/rejection flow and an automated reminder system notifying doctors of upcoming bookings via scheduled alerts",
+        "Designed and integrated RESTful APIs with JWT authentication middleware; participated in code reviews and iterative feature delivery in a remote-first workflow"
       ],
-      tags: ["React", "Node.js", "REST APIs", "Git", "JavaScript"]
+      tags: ["MongoDB", "Express", "React", "Node.js", "REST APIs", "JWT"]
     }
   ],
 

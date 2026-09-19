@@ -24,19 +24,28 @@ export default function ContributionGraph() {
   useEffect(() => {
     async function fetchContributions() {
       try {
-        const res = await fetch(`https://github-contributions-api.deno.dev/${GITHUB_USERNAME}.json`);
-        if (!res.ok) throw new Error('Failed to fetch');
+        const res = await fetch(`https://github-contributions-api.jogruber.de/v4/${GITHUB_USERNAME}?y=last`);
+        if (!res.ok) throw new Error('Failed to fetch from primary API');
         const data = await res.json();
         
-        let totalCount = 0;
-        const parsedWeeks = data.contributions.map((week) =>
-          week.map((day) => {
-            totalCount += day.contributionCount;
-            return LEVEL_MAP[day.contributionLevel] || 0;
-          })
-        );
-        setWeeks(parsedWeeks);
-        setTotal(totalCount);
+        if (data && Array.isArray(data.contributions)) {
+          const days = data.contributions;
+          const parsedWeeks = [];
+          for (let i = 0; i < days.length; i += 7) {
+            parsedWeeks.push(days.slice(i, i + 7).map((d) => d.level ?? 0));
+          }
+          setWeeks(parsedWeeks);
+
+          // Get total from total object or sum counts
+          let totalCount = 0;
+          if (data.total) {
+            const totalKeys = Object.keys(data.total);
+            totalCount = data.total[totalKeys[0]] || days.reduce((sum, d) => sum + (d.count || 0), 0);
+          } else {
+            totalCount = days.reduce((sum, d) => sum + (d.count || 0), 0);
+          }
+          setTotal(totalCount);
+        }
       } catch (err) {
         console.error('Error fetching GitHub contributions:', err);
       }
